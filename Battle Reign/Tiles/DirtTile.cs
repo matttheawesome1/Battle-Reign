@@ -16,6 +16,21 @@ namespace Battle_Reign {
             base.Update(gt);
         }
 
+        public override void Fix() {
+            for (int i = X - 1; i < X + 1; i++) {
+                for (int j = Y - 1; j < Y + 1; j++) {
+                    if ((i != X && j != Y) && Tiles[i, j].GetType() == typeof(DirtTile)) {
+                        Tiles[i, j] = new DirtTile(Tiles[i, j].Position, Tiles[i, j].Tiles);
+
+                        DirtTile t = Tiles[i, j] as DirtTile;
+                        t.Update(true);
+
+                        Tiles[i, j] = t;
+                    }
+                }
+            }
+        }
+
         public void Update(bool a) {
             if (Tiles[X - 1, Y].GetType() == typeof(DirtTile)) {
                 Values[0, 1] = TextureSpot.MIDMID;
@@ -105,7 +120,7 @@ namespace Battle_Reign {
                 for (int j = 0; j < Values.GetLength(1); j++) {
                     sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * (TileWidth * .33f), Position.Y + (j + 1) * (TileWidth * .33f)),
                         new Rectangle(new Vector2((TileWidth / 3 * SpriteCoords.X) + ((TileWidth * .33f) * (float) Math.Floor((float) Values[i, j] / 3)), (TileWidth / 3 * SpriteCoords.Y) + ((TileWidth * .33f) * (float) Math.Floor((float) Values[i, j] % 3))).ToPoint(),
-                        new Vector2(TileWidth / 3).ToPoint()), Color.White, 0f, new Vector2(TileWidth / 3), 1f, SpriteEffects.None, 0f);
+                        new Vector2(TileWidth / 3).ToPoint()), Color.White, 0f, new Vector2(TileWidth / 3), 1f, SpriteEffects.None, TileLayer);
                 }
             }
 

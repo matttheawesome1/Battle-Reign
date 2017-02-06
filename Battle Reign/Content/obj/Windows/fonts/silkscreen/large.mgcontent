@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/fonts/silkscreen/large.spritefont</SourceFile>
-  <SourceTime>2016-12-15T13:59:59.6386272-05:00</SourceTime>
-  <DestFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/bin/Windows/fonts/silkscreen/large.xnb</DestFile>
-  <DestTime>2016-12-15T14:05:48.028248-05:00</DestTime>
+  <SourceFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/large.spritefont</SourceFile>
+  <SourceTime>2016-11-30T13:51:26.5004146-05:00</SourceTime>
+  <DestFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/bin/Windows/fonts/silkscreen/large.xnb</DestFile>
+  <DestTime>2017-01-27T12:00:14.3239885-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

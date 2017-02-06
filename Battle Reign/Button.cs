@@ -7,8 +7,7 @@ using System.Collections.Generic;
 
 namespace Battle_Reign {
     public class Button : GameObject {
-        event Click OnClick;
-        public delegate void Click(object sender, EventArgs e);
+        public delegate void Pressed(object sender, EventArgs e);
         EventArgs e;
 
         EventHandler ev;
@@ -27,6 +26,8 @@ namespace Battle_Reign {
         /// <param name="secondary">Secondary color</param>
         public Button(bool stat, string text, string fontPath, int borderWidth, Vector2 position, Point size, EventHandler _ev, Nullable<Color> primary, Nullable<Color> secondary) {
             Static = stat;
+
+            Level = 1;
 
             Text = text;
             Position = position;
@@ -65,6 +66,8 @@ namespace Battle_Reign {
         public Button(bool stat, string iconPath, int borderWidth, Vector2 position, Point size, EventHandler _ev, Nullable<Color> primary, Nullable<Color> secondary) {
             Static = stat;
 
+            Level = 1;
+
             Position = position;
             HoverPosition = new Vector2(position.X, position.Y - 25);
             OriginalPosition = position;
@@ -89,6 +92,8 @@ namespace Battle_Reign {
         public Button(bool stat, string iconPath, string text, string fontPath, int borderWidth, Vector2 position, Point size, EventHandler _ev, Nullable<Color> primary, Nullable<Color> secondary) {
             Static = stat;
 
+            Level = 1;
+
             Text = text;
             Position = position;
             HoverPosition = new Vector2(position.X, position.Y - 25);
@@ -113,17 +118,11 @@ namespace Battle_Reign {
 
             Hitbox = new Rectangle(Position.ToPoint(), Size);
         }
-        /// <summary>
-        /// Creates a button
-        /// </summary>
-        /// <param name="stat"></param>
-        /// <param name="text"></param>
-        /// <param name="fontPath"></param>
-        /// <param name="position"></param>
-        /// <param name="_ev"></param>
-        /// <param name="backgroundPath"></param>
+
         public Button(bool stat, string text, string fontPath, Vector2 position, EventHandler _ev, string backgroundPath) {
             Static = stat;
+
+            Level = 1;
 
             Text = text;
             Position = position;
@@ -147,16 +146,10 @@ namespace Battle_Reign {
 
             Hitbox = new Rectangle(Position.ToPoint(), Size);
         }
-        /// <summary>
-        /// Creates a button
-        /// </summary>
-        /// <param name="stat"></param>
-        /// <param name="iconPath"></param>
-        /// <param name="position"></param>
-        /// <param name="_ev"></param>
-        /// <param name="backgroundPath"></param>
         public Button(bool stat, string iconPath, Vector2 position, EventHandler _ev, string backgroundPath) {
             Static = stat;
+
+            Level = 1;
 
             Position = position;
             HoverPosition = new Vector2(position.X, position.Y - 25);
@@ -179,18 +172,10 @@ namespace Battle_Reign {
 
             Hitbox = new Rectangle(Position.ToPoint(), Size);
         }
-        /// <summary>
-        /// Creates a button
-        /// </summary>
-        /// <param name="stat"></param>
-        /// <param name="iconPath"></param>
-        /// <param name="text"></param>
-        /// <param name="fontPath"></param>
-        /// <param name="position"></param>
-        /// <param name="_ev"></param>
-        /// <param name="backgroundPath"></param>
         public Button(bool stat, string iconPath, string text, string fontPath, Vector2 position, EventHandler _ev, string backgroundPath) {
             Static = stat;
+
+            Level = 1;
 
             Text = text;
             Position = position;
@@ -217,12 +202,8 @@ namespace Battle_Reign {
             Hitbox = new Rectangle(Position.ToPoint(), Size);
         }
 
-        /// <summary>
-        /// Updates the buttons position.
-        /// </summary>
-        /// <param name="gt"></param>
         public void Update(GameTime gt) {
-            Hitbox = new Rectangle(Position.ToPoint(), Size);
+            Hitbox = new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), Size);
             MouseState state = Mouse.GetState();
 
             Hovering = Hitbox.Intersects(Mouse.Hitbox);
@@ -261,8 +242,9 @@ namespace Battle_Reign {
             }
 
             if (Clicked && ev != null && Hovering && state.LeftButton == ButtonState.Released) {
-                ev(this, e);
-                Clicked = false;
+                /*ev(this, e);
+                Clicked = false;*/
+                GameObject.ObjectsClicked.Add(this);
             }
 
             if (Clicked && !Hovering && state.LeftButton == ButtonState.Released) {
@@ -270,39 +252,40 @@ namespace Battle_Reign {
             }
         }
 
-        /// <summary>
-        /// Draws the button to screen.
-        /// </summary>
-        /// <param name="sb"></param>
+        public override void Click() {
+            ev(this, e);
+            Clicked = false;
+        }
+
         public void Draw(SpriteBatch sb) {
             if (!HasBackground) {
-                sb.Draw(BlankPixel, new Rectangle(Position.ToPoint(), Size), Hovering ? SecondaryColor : PrimaryColor);
-                sb.Draw(BlankPixel, new Rectangle(new Vector2(Position.X + BorderWidth, Position.Y + BorderWidth).ToPoint(), new Point(Size.X - BorderWidth * 2, Size.Y - BorderWidth * 2)), Hovering ? PrimaryColor : SecondaryColor);
+                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), Size), Hovering ? SecondaryColor : PrimaryColor);
+                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + new Vector2(Position.X + BorderWidth, Position.Y + BorderWidth).ToPoint(), new Point(Size.X - BorderWidth * 2, Size.Y - BorderWidth * 2)), Hovering ? PrimaryColor : SecondaryColor);
             }
 
             switch (Type) {
                 case ButtonType.TEXT:
                     if (HasBackground)
-                        sb.Draw(Background, Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, Color.White);
 
-                    sb.DrawString(Font, Text, new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - Font.MeasureString(Text).Y / 2 + 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - Font.MeasureString(Text).Y / 2 + 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
 
                     break;
                 case ButtonType.ICON:
                     if (HasBackground)
-                        sb.Draw(Background, Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, Color.White);
 
-                    sb.Draw(Icon, new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
 
                     break;
                 case ButtonType.BOTH:
                     if (HasBackground)
-                        sb.Draw(Background, Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, Color.White);
 
                     int spacing = 10, height = (int) Font.MeasureString(Text).Y + Icon.Height;
 
-                    sb.Draw(Icon, new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2 - spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
-                    sb.DrawString(Font, Text, new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - 2 + spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2 - spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - 2 + spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
 
                     break;
                 default:

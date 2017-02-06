@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace Battle_Reign {
     public static class Utilities {
@@ -40,14 +41,28 @@ namespace Battle_Reign {
 
         static Dictionary<char, int> consonantsReset;
 
-        public static IEnumerable<String> SplitInParts(this String s, Int32 partLength) {
-            if (s == null)
-                throw new ArgumentNullException("s");
-            if (partLength <= 0)
-                throw new ArgumentException("Part length has to be positive.", "partLength");
-
-            for (var i = 0; i < s.Length; i += partLength)
-                yield return s.Substring(i, Math.Min(partLength, s.Length - i));
+        public static IEnumerable<string> SplitToLines(string stringToSplit, int maximumLineLength) {
+            var words = stringToSplit.Split(' ').Concat(new[] { "" });
+            return
+                words
+                    .Skip(1)
+                    .Aggregate(
+                        words.Take(1).ToList(),
+                        (a, w) => {
+                            var last = a.Last();
+                            while (last.Length > maximumLineLength) {
+                                a[a.Count() - 1] = last.Substring(0, maximumLineLength);
+                                last = last.Substring(maximumLineLength);
+                                a.Add(last);
+                            }
+                            var test = last + " " + w;
+                            if (test.Length > maximumLineLength) {
+                                a.Add(w);
+                            } else {
+                                a[a.Count() - 1] = test;
+                            }
+                            return a;
+                        });
         }
 
         public static Int32 Next(Int32 min, Int32 max) {
@@ -77,6 +92,9 @@ namespace Battle_Reign {
         }
 
         public static float Distance(Point p1, Point p2) {
+            return (float) Math.Abs(Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2)));
+        }
+        public static float Distance(Vector2 p1, Vector2 p2) {
             return (float) Math.Abs(Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2)));
         }
 

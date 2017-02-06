@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class Tree : Block {
-        public Tree(Vector2 position) : base(Spritesheet, position, new Point(18, 0), new Point(3, 4)) {
+        public Tree(Point coords) : base(Spritesheet, coords, new Point(18, 0), new Point(3, 4)) {
 
         }
 

@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Input;
 namespace Battle_Reign {
     public abstract class Tile : GameObject {
         public Tile(Texture2D image, Vector2 position, Tile[,] tiles, Point spriteCoords, Point spriteSize) {
+            Level = 3;
+
             Spritesheet = image;
             Undiscovered = Content.Load<Texture2D>("tiles/undiscovered");
             Position = position;
@@ -29,8 +31,7 @@ namespace Battle_Reign {
 
             Hitbox = new Rectangle(Position.ToPoint(), new Point(TileWidth));
 
-            LeftButtonClick += (s, e) => Discover(false);
-            RightButtonClick += (s, e) => Discover(true);
+            LeftButtonClick += (s, e) => Fix();
         }
 
         public virtual void Update(GameTime gt) {
@@ -41,44 +42,18 @@ namespace Battle_Reign {
                 Mouse.Hovering = true;
 
                 if (state.LeftButton == ButtonState.Pressed) LeftButtonClicked = true;
-                if (state.RightButton == ButtonState.Pressed) RightButtonClicked = true;
 
                 if (LeftButtonClicked && LeftButtonClick != null && Hovering && state.LeftButton == ButtonState.Released) {
-                    LeftButtonClick(this, EventArgs);
-                    LeftButtonClicked = false;
-
-                    Console.WriteLine(Discovered);
+                    GameObject.ObjectsClicked.Add(this);
                 }
                 if (LeftButtonClicked && !Hovering && state.LeftButton == ButtonState.Released) {
                     LeftButtonClicked = false;
                 }
-
-                if (RightButtonClicked && RightButtonClick != null && Hovering && state.RightButton == ButtonState.Released) {
-                    RightButtonClick(this, EventArgs);
-                    RightButtonClicked = false;
-                }
-                if (RightButtonClicked && !Hovering && state.RightButton == ButtonState.Released) {
-                    RightButtonClicked = false;
-                }
             }
-
-            if (HasBlock) Block.Update(gt);
         }
 
         public virtual void Draw(SpriteBatch sb) {
-            if (HasBlock) Block.Draw(sb);
-
-            if (HasBuilding) Building.Draw(sb);
-
-            /*if (false) {
-                if (Discovered) {
-                    if (!InView) {
-                        sb.Draw(Undiscovered, Position, new Color(Color.White, 200));
-                    }
-                } else {
-                    sb.Draw(Undiscovered, Position, Color.White);
-                }
-            }*/
+            
         }
 
         public virtual void Draw(SpriteBatch sb, Vector2 origClick) {
@@ -86,26 +61,20 @@ namespace Battle_Reign {
             sb.Draw(BlankPixel, new Rectangle(new Vector2(origClick.X - origClick.X % TileWidth, origClick.Y - origClick.Y % TileWidth).ToPoint(), new Point(TileWidth, 4)), Color.White);
             sb.Draw(BlankPixel, new Rectangle(new Vector2(origClick.X - origClick.X % TileWidth + TileWidth - 4, origClick.Y - origClick.Y % TileWidth).ToPoint(), new Point(4, TileWidth)), Color.White);
             sb.Draw(BlankPixel, new Rectangle(new Vector2(origClick.X - origClick.X % TileWidth, origClick.Y - origClick.Y % TileWidth + TileWidth - 4).ToPoint(), new Point(TileWidth, 4)), Color.White);
-
-            if (HasBlock) Block.Draw(sb);
-            if (HasBuilding) Building.Draw(sb);
-
-            if (false) {
-                if (Discovered) {
-                    if (!InView) {
-                        sb.Draw(Undiscovered, Position, new Color(Color.White, 200));
-                    }
-                } else {
-                    sb.Draw(Undiscovered, Position, Color.White);
-                }
-            }
         }
 
         public virtual void Fix() {
 
         }
 
-        public virtual void Discover(bool inView) {
+        public override void Click() {
+            LeftButtonClick(this, EventArgs);
+            LeftButtonClicked = false;
+
+            Fix();
+        }
+
+        public void Discover(bool inView) {
             Discovered = true;
 
             int radius = 4 * TileWidth + TileWidth;
@@ -120,29 +89,19 @@ namespace Battle_Reign {
                 }
             }
 
-            Tiles.Cast<Tile>().ToList().ForEach(x => x.Fix());
+            //Tiles.Cast<Tile>().ToList().ForEach(x => x.Fix());
         }
 
         public bool IsHovering {
             get { return Mouse.Hitbox.Intersects(Hitbox); }
         }
 
-        public delegate void Click(object sender, EventArgs e);
+        public delegate void Pressed(object sender, EventArgs e);
         public EventArgs EventArgs;
         public EventHandler LeftButtonClick;
-        public EventHandler RightButtonClick;
 
         public bool Discovered { get; set; }
         public bool InView { get; set; }
-        public bool HasUnit {
-            get { return Unit != null; }
-        }
-        public bool HasBuilding {
-            get { return Building != null; }
-        }
-        public bool HasBlock {
-            get { return Block != null; }
-        }
 
         public bool LeftButtonClicked { get; set; }
         public bool RightButtonClicked { get; set; }
@@ -164,10 +123,6 @@ namespace Battle_Reign {
         public int Y {
             get { return Coordinates.Y; }
         }
-
-        public Unit Unit { get; set; }
-        public Building Building { get; set; }
-        public Block Block { get; set; }
 
         public Tile[,] Tiles { get; set; }
     }

@@ -1,17 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class Base : Building {
-        public Base(Vector2 position, Point spriteCoords, Team team) : base(Spritesheet, position, spriteCoords, new Point(3, 4)) {
+        public Base(Point coords, Point spriteCoords, Team team) : base(Spritesheet, coords, spriteCoords, new Point(3, 4), new Point(3), true) {
             Team = team;
             Color = team.Color;
+        }
+        public void SpawnUnit() {
+            int radius = 1;
+            bool found = false;
+
+            while (!found) {
+                for (int a = Coordinates.X - radius - 1; a < Coordinates.X + radius + 1 && !found; a++) {
+                    for (int b = Coordinates.Y - radius - 1; b < Coordinates.Y + radius + 1 && !found; b++) {
+                        if (Utilities.Distance(new Point(a, b), Coordinates) < radius) {
+                            if (Team.World.IsTileAvailable(new Point(a, b))) {
+                                found = true;
+
+                                Unit unit = new UnitScout(new Point(a, b), Team.World);
+                                unit.Team = Team;
+
+                                unit.Place();
+                                Team.World.Units.Add(unit);
+                                Team.Discover(unit.Coordinates, unit.VisionRange);
+
+                                Console.WriteLine("PLACED UNIT OF TEAM " + Team.Name + " AT " + new Point(a, b).ToString() + "\nTEAM COLOR: " + Team.Color.ToString() + "\n");
+                            }
+                        }
+                    }
+                }
+
+                radius++;
+            }
         }
 
         public override void Update(GameTime gt) {

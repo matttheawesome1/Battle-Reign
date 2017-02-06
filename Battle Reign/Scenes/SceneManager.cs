@@ -20,6 +20,8 @@ namespace Battle_Reign {
         }
 
         public void Update(GameTime gt) {
+            Mouse.Hovering = false;
+
             CurrentScene.Update(gt);
 
             switch (CurrentScene.Action) {
