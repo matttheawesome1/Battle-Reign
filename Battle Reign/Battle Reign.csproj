@@ -54,6 +54,7 @@
     <Compile Include="Cards\CardQuarry.cs" />
     <Compile Include="Cards\CardScout.cs" />
     <Compile Include="Cards\CardWarrior.cs" />
+    <Compile Include="Cards\CardWorker.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameMouse.cs" />
     <Compile Include="GameObject.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Units\Unit.cs" />
     <Compile Include="Units\UnitScout.cs" />
     <Compile Include="Units\UnitWarrior.cs" />
+    <Compile Include="Units\UnitWorker.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>

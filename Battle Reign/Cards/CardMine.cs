@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class CardMine : Card {
-        public CardMine(int padding, int spacing, List<Card> hand, Team team, World world, Save save) : base("MINE", "Mines for ores", "", "g100", padding, spacing, hand, world, save, team, new Point(0, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, BuildingColor, CardType.BUILDING) {
+        public CardMine(int padding, int spacing, List<Card> hand, Team team, World world) : base("MINE", "Mines for ores", "", "g100", padding, spacing, hand, world, team, new Point(0, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, BuildingColor, CardType.BUILDING) {
 
         }
 

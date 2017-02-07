@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Battle_Reign {
     public class CardScout : Card {
-        public CardScout(int padding, int spacing, List<Card> hand, Team team, World world, Save save) : base("SCOUT", "Discover the land quickly", "", "g75", padding, spacing, hand, world, save, team, new Point(2, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, UnitColor, CardType.UNIT) {
+        public CardScout(int padding, int spacing, List<Card> hand, Team team, World world) : base("SCOUT", "Discover the land quickly", "", "g75", padding, spacing, hand, world, team, new Point(2, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, UnitColor, CardType.UNIT) {
             
         }
 

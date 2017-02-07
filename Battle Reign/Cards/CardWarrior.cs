@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Battle_Reign {
     public class CardWarrior : Card {
-        public CardWarrior(int padding, int spacing, List<Card> hand, Team team, World world, Save save) : base("WARRIOR", "Attack enemies", "", "g150", padding, spacing, hand, world, save, team, new Point(1, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, UnitColor, CardType.UNIT) {
+        public CardWarrior(int padding, int spacing, List<Card> hand, Team team, World world) : base("WARRIOR", "Attack enemies", "", "g150", padding, spacing, hand, world, team, new Point(1, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, UnitColor, CardType.UNIT) {
 
         }
 

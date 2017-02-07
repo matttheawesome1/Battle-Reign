@@ -131,6 +131,8 @@ namespace Battle_Reign {
         }
 
         public virtual void Draw(SpriteBatch sb) {
+            sb.Draw(Spritesheet, Position + new Vector2(SpriteSize.X * Cell / 2 - 12, -15), new Rectangle(new Point(SpritesheetSize.X - 3, 0) * new Point(Cell), new Point(2 * Cell)), Team.Color);
+
             if (Selected) {
                 foreach (Tile t in World.Tiles) {
                     if (Utilities.Distance(t.Coordinates, World.GetCoordinates(OriginalPosition)) <= MovesAvailable) {
@@ -148,9 +150,8 @@ namespace Battle_Reign {
             sb.Draw(Spritesheet, Position, new Rectangle(SpriteCoords * new Point(Cell), SpriteSize * new Point(Cell)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, UnitLayer);
         }
         public virtual void Draw(SpriteBatch sb, bool available) {
-            //sb.Draw(BlankPixel, Hitbox, available ? ColorAvailable : ColorUnavailable);
             DrawHitbox(sb, available ? ColorAvailable : ColorUnavailable);
-
+            
             sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, UnitLayer);
         }
         public void DrawHitbox(SpriteBatch sb, Color color) {
@@ -160,6 +161,14 @@ namespace Battle_Reign {
             sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(width, Hitbox.Height + width)), color);
             sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X, Hitbox.Y + Hitbox.Height), new Point(Hitbox.Width, width)), color);
             sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X + Hitbox.Width, Hitbox.Y), new Point(width, Hitbox.Height + width)), color);
+        }
+        public void DrawOutline(SpriteBatch sb) {
+            int width = 4;
+
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(width, TileWidth)), Team.Color);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(TileWidth, width)), Team.Color);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(SpriteSize.X * Cell - width, 0), new Point(width, TileWidth)), Team.Color);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(0, SpriteSize.Y * Cell - width), new Point(TileWidth, width)), Team.Color);
         }
 
         public override string ToString() {

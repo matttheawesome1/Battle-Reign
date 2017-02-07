@@ -58,18 +58,20 @@ namespace Battle_Reign {
             if (remove) {
                 if (Gold >= CardPrice * amount) {
                     for (int i = 0; i < (amount > Cards.Capacity ? Cards.Capacity : amount); i++) {
-                        int a = Utilities.Next(0, 5);
+                        int a = Utilities.Next(0, 6);
 
                         if (a == 0)
-                            Cards.Add(new CardMine((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                            Cards.Add(new CardMine((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                         else if (a == 1)
-                            Cards.Add(new CardFarm((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                            Cards.Add(new CardFarm((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                         else if (a == 2)
-                            Cards.Add(new CardQuarry((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                            Cards.Add(new CardQuarry((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                         else if (a == 3)
-                            Cards.Add(new CardWarrior((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                            Cards.Add(new CardWarrior((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                         else if (a == 4)
-                            Cards.Add(new CardScout((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                            Cards.Add(new CardScout((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
+                        else if (a == 5)
+                            Cards.Add(new CardWorker((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                     }
 
                     Gold -= CardPrice * amount;
@@ -77,18 +79,20 @@ namespace Battle_Reign {
                 }
             } else {
                 for (int i = 0; i < (amount > Cards.Capacity ? Cards.Capacity : amount); i++) {
-                    int a = Utilities.Next(0, 5);
+                    int a = Utilities.Next(0, 6);
 
                     if (a == 0)
-                        Cards.Add(new CardMine((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                        Cards.Add(new CardMine((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                     else if (a == 1)
-                        Cards.Add(new CardFarm((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                        Cards.Add(new CardFarm((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                     else if (a == 2)
-                        Cards.Add(new CardQuarry((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                        Cards.Add(new CardQuarry((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                     else if (a == 3)
-                        Cards.Add(new CardWarrior((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                        Cards.Add(new CardWarrior((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                     else if (a == 4)
-                        Cards.Add(new CardScout((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World, Save));
+                        Cards.Add(new CardScout((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
+                    else if (a == 5)
+                        Cards.Add(new CardWorker((int) AddCardButton.Position.X + AddCardButton.Background.Width + 35, CardSpacing, Cards, this, World));
                 }
             }
         }

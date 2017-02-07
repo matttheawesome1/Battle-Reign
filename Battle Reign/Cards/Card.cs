@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public abstract class Card : GameObject {
-        public Card(string name, string desc1, string desc2, string costString, int padding, int spacing, List<Card> hand, World world, Save save, Team team, Point spriteCoords, Point spriteSize, Color primaryColor, CardType type) {
+        public Card(string name, string desc1, string desc2, string costString, int padding, int spacing, List<Card> hand, World world, Team team, Point spriteCoords, Point spriteSize, Color primaryColor, CardType type) {
             Name = name;
             Team = team;
 
@@ -34,7 +34,6 @@ namespace Battle_Reign {
 
             Hand = hand;
             World = world;
-            Save = save;
 
             SpriteCoords = spriteCoords;
             SpriteSize = spriteSize;
@@ -146,6 +145,8 @@ namespace Battle_Reign {
                                 PlacementUnit = new UnitWarrior(new Vector2(Mouse.Position.X - Mouse.Position.X % TileWidth, Mouse.Position.Y - Mouse.Position.Y % TileWidth).ToPoint(), World);
                             } else if (type == typeof(CardScout)) {
                                 PlacementUnit = new UnitScout(new Vector2(Mouse.Position.X - Mouse.Position.X % TileWidth, Mouse.Position.Y - Mouse.Position.Y % TileWidth).ToPoint(), World);
+                            } else if (type == typeof(CardWorker)) {
+                                PlacementUnit = new UnitWorker(new Vector2(Mouse.Position.X - Mouse.Position.X % TileWidth, Mouse.Position.Y - Mouse.Position.Y % TileWidth).ToPoint(), World);
                             }
 
                             PlacingUnit = true;
@@ -283,7 +284,6 @@ namespace Battle_Reign {
         public List<Card> Hand { get; set; }
 
         public World World { get; set; }
-        public Save Save { get; set; }
 
         public CardType Type { get; set; }
     }

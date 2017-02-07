@@ -16,7 +16,7 @@ namespace Battle_Reign {
 
         SceneManager sm;
 
-        int fps = 0, tempFPS = 0;
+        int fps = 0, tempFPS = 0, previousScrollValue;
 
         float elapsed = 0f;
 
@@ -86,6 +86,13 @@ namespace Battle_Reign {
             sm.Update(gameTime);
 
             mouse.Update();
+
+            if (Mouse.GetState().ScrollWheelValue < previousScrollValue) {
+                camera.Zoom += .05f;
+            } else if (Mouse.GetState().ScrollWheelValue > previousScrollValue) {
+                camera.Zoom -= .05f;
+            }
+            previousScrollValue = Mouse.GetState().ScrollWheelValue;
 
             base.Update(gameTime);
         }

@@ -28,8 +28,6 @@ namespace Battle_Reign {
                                 unit.Place();
                                 Team.World.Units.Add(unit);
                                 Team.Discover(unit.Coordinates, unit.VisionRange);
-
-                                Console.WriteLine("PLACED UNIT OF TEAM " + Team.Name + " AT " + new Point(a, b).ToString() + "\nTEAM COLOR: " + Team.Color.ToString() + "\n");
                             }
                         }
                     }

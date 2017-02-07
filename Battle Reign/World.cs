@@ -27,10 +27,6 @@ namespace Battle_Reign {
             Camera.Position = new Vector2(Size.X / 2 - Graphics.PreferredBackBufferWidth / 2 + TileWidth / 2, Size.Y / 2 - Graphics.PreferredBackBufferHeight / 2);
 
             Tiles = new Tile[Size.X / TileWidth, Size.Y / TileWidth];
-
-            Blocks = new List<Block>();
-            Units = new List<Unit>();
-            Buildings = new List<Building>();
         }
         public List<Point> GetWalls(Point position, float radius) {
             List<Point> points = new List<Point>();
@@ -65,6 +61,9 @@ namespace Battle_Reign {
         public void Update(GameTime gt) {
             KeyboardState kState = Keyboard.GetState();
             MouseState mState = Mouse.GetState();
+
+            if (kState.IsKeyDown(Keys.R) && Mouse.CanPress)
+                GenerateMap(Save.Teams);
 
             if (!Typing && kState.GetPressedKeys().Length > 0 && CanPress) {
                 CanPress = false;
@@ -293,6 +292,10 @@ namespace Battle_Reign {
         }    
 
         public void GenerateMap(Team[] teams) {
+            Blocks = new List<Block>();
+            Units = new List<Unit>();
+            Buildings = new List<Building>();
+
             Camera.Position = new Vector2(Size.X / 2 - Graphics.PreferredBackBufferWidth / 2 + TileWidth / 2, Size.Y / 2 - Graphics.PreferredBackBufferHeight / 2);
 
             GenerateTiles();
@@ -340,21 +343,11 @@ namespace Battle_Reign {
                     if (i <= Buffer - 1 || i >= Tiles.GetLength(0) - Buffer || j <= Buffer - 1 || j >= Tiles.GetLength(1) - Buffer) {
                         Tiles[i, j] = new WaterTile(new Vector2(i * TileWidth, j * TileWidth), Tiles);
                     } else {
-                        int a = Utilities.Next(0, 50);
+                        int a = Utilities.Next(0, 70);
 
                         if (a > 0)
                             Tiles[i, j] = new GrassTile(new Vector2(i * TileWidth, j * TileWidth), Tiles);
                         else {
-                            int radius = 2;
-
-                            /*for(int x = i - radius - 1; x < i + radius + 1; x++) {
-                                for (int y = j - radius - 1; x < j + radius + 1; y++) {
-                                    if (!(x <= Buffer - 1 || x >= Tiles.GetLength(0) - Buffer || y <= Buffer - 1 || y >= Tiles.GetLength(1) - Buffer) && Utilities.Distance(Tiles[x, y].Coordinates, new Point(i, j)) <= radius) {
-                                            Tiles[x, y] = new WaterTile(new Vector2(x, y) * TileWidth, Tiles);
-                                    }
-                                }
-                            }*/
-
                             Tiles[i, j] = new WaterTile(new Vector2(i * TileWidth, j * TileWidth), Tiles);
                         }
                     }
@@ -365,8 +358,8 @@ namespace Battle_Reign {
                 if (!(t.X <= Buffer - 1 || t.X >= Tiles.GetLength(0) - Buffer || t.Y <= Buffer - 1 || t.Y >= Tiles.GetLength(1) - Buffer)) {
                     int radius = Utilities.Next(0, 5);
 
-                    for (int x = t.X - radius; x < t.X + radius; x++) {
-                        for (int y = t.Y - radius; y < t.Y + radius; y++) {
+                    for (int x = t.X - radius - Utilities.Next(0, 1); x < t.X + radius + Utilities.Next(0, 1); x++) {
+                        for (int y = t.Y - radius - Utilities.Next(0, 1); y < t.Y + radius + Utilities.Next(0, 1); y++) {
                             if (!(x <= Buffer - 1 || x >= Tiles.GetLength(0) - Buffer || y <= Buffer - 1 || y >= Tiles.GetLength(1) - Buffer) && Utilities.Distance(Tiles[x, y].Coordinates, t.Coordinates) <= radius) {
                                 Tiles[x, y] = new WaterTile(new Vector2(x, y) * TileWidth, Tiles);
                             }
