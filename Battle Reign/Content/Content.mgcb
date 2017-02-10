@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:backgrounds/game.png
 
-#begin backgrounds/mainmenu.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:backgrounds/mainmenu.png
-
 #begin buttons/icons/exit/large.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -384,4 +372,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:mouse/normal.png
+
+#begin backgrounds\mainmenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:backgrounds\mainmenu.png
 

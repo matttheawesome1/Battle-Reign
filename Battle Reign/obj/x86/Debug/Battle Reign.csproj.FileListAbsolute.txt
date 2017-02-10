@@ -184,3 +184,6 @@ C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Deb
 C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\obj\x86\Debug\Battle Reign.csprojResolveAssemblyReference.cache
+P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\XtraLarge.xnb
+P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouse.xnb
+P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouseHover.xnb
