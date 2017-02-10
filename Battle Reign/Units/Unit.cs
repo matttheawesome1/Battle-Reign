@@ -8,14 +8,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Battle_Reign {
     public class Unit : GameObject {
-        public Unit(int visionRange, int moveRange, Point coords, Point spriteCoords, Point spriteSize, Point hitboxSize, World world) {
+        public Unit(int visionRange, int moveRange, int maxHealth, Point coords, Point spriteCoords, Point spriteSize, Point hitboxSize, World world) {
             VisionRange = visionRange;
 
             Speed = 5;
             MoveRange = moveRange;
             MovesAvailable = MoveRange;
 
-            Coordinates = coords;
+            MaxHealth = maxHealth;
+            Health = MaxHealth;
+
+            //Coordinates = coords;
             SpriteCoords = spriteCoords;
             SpriteSize = spriteSize;
 
@@ -104,7 +107,7 @@ namespace Battle_Reign {
             if (Save.CurrentTeam == Team) {
                 float buffer = 1;
 
-                if (CanMove) {
+                if (CanMove && Placed) {
                     T = (T + Increment) % 360;
                     Position = new Vector2(Position.X, Position.Y + Amplitude * (float) Math.Sin(T) * (float) gt.ElapsedGameTime.TotalSeconds);
                 }
@@ -131,7 +134,7 @@ namespace Battle_Reign {
         }
 
         public virtual void Draw(SpriteBatch sb) {
-            sb.Draw(Spritesheet, Position + new Vector2(SpriteSize.X * Cell / 2 - 12, -15), new Rectangle(new Point(SpritesheetSize.X - 3, 0) * new Point(Cell), new Point(2 * Cell)), Team.Color);
+            sb.Draw(Spritesheet, Position + new Vector2(SpriteSize.X * Cell / 2 - 12, -15), new Rectangle(new Point(SpritesheetSize.X - 3, 0) * new Point(Cell), new Point(2 * Cell)), Team.Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
 
             if (Selected) {
                 foreach (Tile t in World.Tiles) {
@@ -175,6 +178,8 @@ namespace Battle_Reign {
             return "(" + Coordinates.X + ", " + Coordinates.Y + ")";
         }
 
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
         public int VisionRange { get; set; }
         public int MoveRange { get; set; }
         public int Amplitude {
@@ -197,7 +202,9 @@ namespace Battle_Reign {
 
         public Point SpriteCoords { get; set; }
         public Point SpriteSize { get; set; }
-        public Point Coordinates { get; set; }
+        public Point Coordinates {
+            get { return OriginalPosition.ToPoint() / new Point(TileWidth); }
+        }
         public Point HitboxSize { get; set; }
 
         public Vector2 Position { get; set; }

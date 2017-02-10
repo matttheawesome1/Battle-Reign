@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class Farm : Building {
-        public Farm(Point coords) : base(Spritesheet, coords, new Point(SpritesheetSize.X - 9, 6), new Point(3), new Point(3), false) {
+        public Farm(Point coords) : base(Spritesheet, coords, new Point(SpritesheetSize.X - 9, 6), new Point(3, 4), new Point(3), true) {
 
         }
 

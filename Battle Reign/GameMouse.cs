@@ -43,7 +43,7 @@ namespace Battle_Reign {
             LeftMouseDown = state.LeftButton == ButtonState.Pressed;
             RightMouseDown = state.RightButton == ButtonState.Pressed;
 
-            Image = LeftMouseDown ? ImageClick : ImageNormal;
+            Image = LeftMouseDown || RightMouseDown ? ImageClick : ImageNormal;
         }
 
         public void Draw(SpriteBatch sb) {

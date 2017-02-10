@@ -119,7 +119,7 @@ namespace Battle_Reign {
             Buildings.ForEach(x => x.Draw(sb));
             Blocks.ForEach(x => x.Draw(sb));
         }
-
+        
         public bool CanPlaceBuilding(Building b) {
             bool available = true;
 
@@ -311,13 +311,14 @@ namespace Battle_Reign {
                 while (true) {
                     bool quit = false;
 
-                    int x = Utilities.Next(0, Tiles.GetLength(0)), y = Utilities.Next(0, Tiles.GetLength(1));
+                    int x = Utilities.Next(0, Tiles.GetLength(0) - 1), y = Utilities.Next(0, Tiles.GetLength(1) - 1);
 
                     foreach(Team t in teams) {
-                        if (IsTileAvailable(new Point(x, y)) && Utilities.Distance(Tiles[x, y].Coordinates, t.Base.Coordinates) > Tiles.GetLength(0) / teams.Length) {
+                        if (Tiles[x, y] != null & IsTileAvailable(new Point(x, y)) && Utilities.Distance(Tiles[x, y].Coordinates, t.Base.Coordinates) > 20) {
                             teams[i].Base.Position = new Vector2(x * TileWidth, y * TileWidth);
                             teams[i].Base.Coordinates = teams[i].Base.Position.ToPoint() / new Point(TileWidth);
                             Buildings.Add(teams[i].Base);
+                            Console.WriteLine(teams[i].Base.Coordinates);
 
                             quit = true;
 
@@ -427,7 +428,7 @@ namespace Battle_Reign {
                             }
                         }
 
-                        if (cont && Utilities.Next(0, 10) < 3) {
+                        if (cont && Utilities.Next(0, 10) < 2) {
                             Tiles[i, j] = new DirtTile(new Vector2(i * TileWidth, j * TileWidth), Tiles);
 
                             Tiles[i - 1, j - 1] = new DirtTile(new Vector2((i - 1) * TileWidth, (j - 1) * TileWidth), Tiles);

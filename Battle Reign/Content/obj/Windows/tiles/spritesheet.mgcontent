@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/tiles/spritesheet.png</SourceFile>
-  <SourceTime>2017-02-07T13:52:26.3592545-05:00</SourceTime>
+  <SourceTime>2017-02-10T12:05:06.3789189-05:00</SourceTime>
   <DestFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/bin/Windows/tiles/spritesheet.xnb</DestFile>
-  <DestTime>2017-02-07T13:53:04.4065163-05:00</DestTime>
+  <DestTime>2017-02-10T12:05:07.5820414-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

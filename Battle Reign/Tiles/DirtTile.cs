@@ -118,9 +118,9 @@ namespace Battle_Reign {
         public override void Draw(SpriteBatch sb) {
             for (int i = 0; i < Values.GetLength(0); i++) {
                 for (int j = 0; j < Values.GetLength(1); j++) {
-                    sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * (TileWidth * .33f), Position.Y + (j + 1) * (TileWidth * .33f)),
-                        new Rectangle(new Vector2((TileWidth / 3 * SpriteCoords.X) + ((TileWidth * .33f) * (float) Math.Floor((float) Values[i, j] / 3)), (TileWidth / 3 * SpriteCoords.Y) + ((TileWidth * .33f) * (float) Math.Floor((float) Values[i, j] % 3))).ToPoint(),
-                        new Vector2(TileWidth / 3).ToPoint()), Color.White, 0f, new Vector2(TileWidth / 3), 1f, SpriteEffects.None, TileLayer);
+                    sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * (Cell), Position.Y + (j + 1) * (Cell)),
+                        new Rectangle(new Vector2((Cell * SpriteCoords.X) + ((Cell) * (float) Math.Floor((float) Values[i, j] / 3)), (Cell * SpriteCoords.Y) + ((Cell) * (float) Math.Floor((float) Values[i, j] % 3))).ToPoint(),
+                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(Cell), 1f, SpriteEffects.None, TileLayer);
                 }
             }
 

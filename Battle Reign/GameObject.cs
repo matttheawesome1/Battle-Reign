@@ -78,7 +78,7 @@ namespace Battle_Reign {
         }
 
         public static Point SpritesheetSize {
-            get { return new Point(Spritesheet.Width / (TileWidth / 3), Spritesheet.Height / (TileWidth / 3)); }
+            get { return new Point(Spritesheet.Width / (Cell), Spritesheet.Height / (Cell)); }
         }
 
         public static ContentManager Content { get; set; }

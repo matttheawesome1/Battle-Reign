@@ -88,9 +88,9 @@ namespace Battle_Reign {
             mouse.Update();
 
             if (Mouse.GetState().ScrollWheelValue < previousScrollValue) {
-                camera.Zoom += .05f;
+                camera.Zoom -= 20;
             } else if (Mouse.GetState().ScrollWheelValue > previousScrollValue) {
-                camera.Zoom -= .05f;
+                camera.Zoom += 20;
             }
             previousScrollValue = Mouse.GetState().ScrollWheelValue;
 

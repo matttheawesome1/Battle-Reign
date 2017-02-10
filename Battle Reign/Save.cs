@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -26,12 +24,17 @@ namespace Battle_Reign {
             else if (size.Y > MaxSize.Y) size.Y = MaxSize.Y;
 
             size = new Point(size.X * TileWidth, size.Y * TileWidth);
+            WorldSize = size;
 
-            World = new World(size, this, parent);
+            StartGame();
 
-            Team[] teams = new Team[3];
-            Teams = teams;
-            
+            EndTurnButton = new Button(true, "END TURN", "silkscreen/small", new Vector2(0), (s, e) => SwitchTeam(), "wide/tiny");
+        }
+        public void StartGame() {
+            World = new World(WorldSize, this, Parent);
+
+            Teams = new Team[3];
+
             World.GenerateMap(Teams);
             CurrentTeam = Teams[0];
 
@@ -40,8 +43,6 @@ namespace Battle_Reign {
             }
 
             Teams.Cast<Team>().ToList().ForEach(x => x.TurnTime = TurnTime);
-
-            EndTurnButton = new Button(true, "END TURN", "silkscreen/small", new Vector2(0), (s, e) => SwitchTeam(), "wide/tiny");
         }
 
         public void Update(GameTime gt) {
@@ -51,6 +52,9 @@ namespace Battle_Reign {
             }
 
             Time += (float) gt.ElapsedGameTime.TotalSeconds;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.R) && Mouse.CanPress)
+                StartGame();
 
             World.Update(gt);
 
@@ -119,6 +123,7 @@ namespace Battle_Reign {
 
         public Button EndTurnButton { get; set; }
 
+        public Point WorldSize { get; set; }
         public Point MaxSize {
             get { return new Point(100); }
         }
