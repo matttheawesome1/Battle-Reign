@@ -24,8 +24,8 @@ namespace Battle_Reign {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 1366;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = 1600;
+            graphics.PreferredBackBufferHeight = 900;
 
             graphics.SynchronizeWithVerticalRetrace = false;
             
@@ -81,9 +81,7 @@ namespace Battle_Reign {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
-            //if (Keyboard.GetState().IsKeyDown(Keys.Down)) camera.Zoom -= .5f;
-            //if (Keyboard.GetState().IsKeyDown(Keys.Up)) camera.Zoom += .5f;
+            mouse.Hovering = false;
 
             sm.Update(gameTime);
 
@@ -114,7 +112,7 @@ namespace Battle_Reign {
             
             sm.Draw(spriteBatch);
 
-            spriteBatch.DrawString(GameObject.FontMedium, fps.ToString(), new Vector2(camera.Position.X + graphics.PreferredBackBufferWidth - 100, camera.Position.Y + graphics.PreferredBackBufferHeight - 35), Color.Red);
+            //spriteBatch.DrawString(GameObject.FontMedium, fps.ToString(), new Vector2(camera.Position.X + graphics.PreferredBackBufferWidth - 100, camera.Position.Y + graphics.PreferredBackBufferHeight - 35), Color.Red);
 
             mouse.Draw(spriteBatch);
 

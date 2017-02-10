@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class CardMine : Card {
-        public CardMine(int tileWidth, int padding, List<Card> hand, Tile[,] tiles) : base("MINE", "Mines for ores", "", "g100", tileWidth, padding, hand, tiles, DefaultCoords, DefaultSize) {
+        public CardMine(int padding, int spacing, List<Card> hand, Team team, World world, Save save) : base("MINE", "Mines for ores", "", "g100", padding, spacing, hand, world, save, team, new Point(0, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, BuildingColor, CardType.BUILDING) {
 
         }
 
-        public override void Update(GameTime gt, bool hovering) {
+        public override void Update(GameTime gt) {
 
 
-            base.Update(gt, hovering);
+            base.Update(gt);
         }
 
         public override void Draw(SpriteBatch sb) {

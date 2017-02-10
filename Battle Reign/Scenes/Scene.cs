@@ -11,7 +11,7 @@ namespace Battle_Reign {
         }
 
         public virtual void Update(GameTime gt) {
-
+            ClickObject();
         }
 
         public virtual void Draw(SpriteBatch sb) {

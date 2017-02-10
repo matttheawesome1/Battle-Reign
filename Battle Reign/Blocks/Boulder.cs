@@ -9,11 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class Boulder : Block {
-        public Boulder(Vector2 position) : base(Spritesheet, position, new Point(21, Utilities.Next(0, 2) * 3), new Point(3, 3)) {
+        public Boulder(Point coords) : base(Spritesheet, coords, new Point(21, Utilities.Next(0, 2) * 3), new Point(3, 3)) {
             Type = (BoulderType) Utilities.Next(0, Enum.GetNames(typeof(BoulderType)).Length);
             SpriteCoords = new Point(SpriteCoords.X, ((int) Type) * SpriteSize.Y);
-
-            Console.WriteLine(SpriteCoords.ToString());
         }
 
         public override void Update(GameTime gt) {

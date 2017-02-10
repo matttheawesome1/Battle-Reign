@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Battle_Reign {
@@ -12,6 +13,9 @@ namespace Battle_Reign {
         }
 
         public static void Initialize(ContentManager content, GraphicsDeviceManager graphics, Camera2D camera, GameMouse mouse) {
+            ObjectsClicked = new List<GameObject>();
+            Types = new List<Type>() { typeof(Button), typeof(Card), typeof(CardFarm), typeof(CardMine), typeof(CardQuarry), typeof(Tile), typeof(GrassTile), typeof(WaterTile), typeof(UndiscoveredTile), typeof(DirtTile), };
+
             Content = content;
             Graphics = graphics;
             Camera = camera;
@@ -24,8 +28,50 @@ namespace Battle_Reign {
             FontMedium = Content.Load<SpriteFont>("fonts/silkscreen/medium");
             FontLarge = Content.Load<SpriteFont>("fonts/silkscreen/large");
             FontTiny = Content.Load<SpriteFont>("fonts/silkscreen/tiny");
-            FontXtraLarge = Content.Load<SpriteFont>("fonts/silkscreen/XtraLarge");
         }
+
+        public virtual void Click() {
+
+        }
+
+        public static void ClickObject() {
+            if (ObjectsClicked.Count > 0) {
+                List<GameObject> inOrder = new List<GameObject>();
+
+                inOrder = ObjectsClicked.OrderBy(x => x.Level).ToList();
+
+                for (int i = 0; i < Types.Count; i++) {
+                    for (int j = 0; j < ObjectsClicked.Count; j++) {
+                        if (ObjectsClicked[j].GetType() == Types[i]) {
+                            inOrder.Add(ObjectsClicked[j]);
+                        }
+                    }
+                }
+
+                if (inOrder.Count > 0) {
+                    foreach (GameObject g in inOrder) {
+                        //Console.WriteLine(g.GetType());
+                    }
+
+                    inOrder[0].Click();
+                }
+            }
+
+            ObjectsClicked = new List<GameObject>();
+        }
+
+        public int Level { get; set; }
+
+        public static float TileLayer {
+            get { return .1f; }
+        }
+        public static float BuildingLayer {
+            get { return .2f; }
+        }
+        public static float UnitLayer {
+            get { return .11f; }
+        }
+
         public static int TileWidth { get; set; }
         public static int Cell {
             get { return TileWidth / 3; }
@@ -47,6 +93,8 @@ namespace Battle_Reign {
         public static SpriteFont FontMedium { get; set; }
         public static SpriteFont FontSmall { get; set; }
         public static SpriteFont FontTiny { get; set; }
-        public static SpriteFont FontXtraLarge { get; set; }
+
+        public static List<GameObject> ObjectsClicked { get; set; }
+        public static List<Type> Types { get; set; }
     }
 }

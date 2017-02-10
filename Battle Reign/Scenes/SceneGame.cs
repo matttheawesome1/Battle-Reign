@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Battle_Reign {
     public class SceneGame : Scene { 
         public SceneGame() : base("Game") {
-            Save = new Save("Nick", new Point(40), this);
+            Save = new Save("Nick", new Point(60), this);
             Camera.Zoom = 1f;
         }
 

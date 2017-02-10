@@ -44,16 +44,23 @@
     <Compile Include="Blocks\Tree.cs" />
     <Compile Include="Buildings\Base.cs" />
     <Compile Include="Buildings\Building.cs" />
+    <Compile Include="Buildings\Farm.cs" />
+    <Compile Include="Buildings\Quarry.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Camera2D.cs" />
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\CardFarm.cs" />
     <Compile Include="Cards\CardMine.cs" />
     <Compile Include="Cards\CardQuarry.cs" />
+    <Compile Include="Cards\CardScout.cs" />
+    <Compile Include="Cards\CardWarrior.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameMouse.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Buildings\Mine.cs" />
+    <Compile Include="Pathfinding\PriorityQueue.cs" />
+    <Compile Include="Pathfinding\SpatialAStar.cs" />
+    <Compile Include="Popup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Save.cs" />
@@ -61,7 +68,7 @@
     <Compile Include="Scenes\SceneGame.cs" />
     <Compile Include="Scenes\SceneMainMenu.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Scenes\SettingsScene.cs" />
+    <Compile Include="Stat.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="Tiles\DirtTile.cs" />
     <Compile Include="Tiles\GrassTile.cs" />
@@ -69,6 +76,8 @@
     <Compile Include="Tiles\UndiscoveredTile.cs" />
     <Compile Include="Tiles\WaterTile.cs" />
     <Compile Include="Units\Unit.cs" />
+    <Compile Include="Units\UnitScout.cs" />
+    <Compile Include="Units\UnitWarrior.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>

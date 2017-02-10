@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace Battle_Reign {
     public class GameMouse : GameObject {
-        Texture2D image, imagePointer, imageHover;
         Color color;
         
         float scale = 1f;
@@ -16,15 +15,15 @@ namespace Battle_Reign {
             Enabled = true;
             CanPress = true;
 
-            imagePointer = c.Load<Texture2D>("mouse/mouse");
-            imageHover = c.Load<Texture2D>("mouse/mouseHover");
+            ImageNormal = c.Load<Texture2D>("mouse/normal");
+            ImageClick = c.Load<Texture2D>("mouse/click");
 
             int r = Utilities.Next(0, 255), g = Utilities.Next(r / 2, 255 - r / 2), b = Utilities.Next(g / 2, 255 - g / 2);
 
             //color = Color.FromNonPremultiplied(r, g, b, 255);
             color = Color.White;
 
-            image = imagePointer;
+            Image = ImageNormal;
 
             MouseState state = GetState();
             Position = Enabled ? state.Position.ToVector2() : Position;
@@ -34,24 +33,21 @@ namespace Battle_Reign {
         }
 
         public void Update() {
-             CanPress = true;
-
-            /*if (GetState().LeftButton == ButtonState.Pressed && CanPress)
-            {
-                Console.WriteLine(Position.ToString());
-            }*/
-
             MouseState state = GetState();
+
+            CanPress = !LeftMouseDown;
 
             Position = Enabled ? new Vector2(state.Position.X + Camera.Position.X, state.Position.Y + Camera.Position.Y) : Position;
             Hitbox = new Rectangle(Position.ToPoint(), Size);
 
             LeftMouseDown = state.LeftButton == ButtonState.Pressed;
-            Hovering = false;
+            RightMouseDown = state.RightButton == ButtonState.Pressed;
+
+            Image = LeftMouseDown ? ImageClick : ImageNormal;
         }
 
         public void Draw(SpriteBatch sb) {
-            sb.Draw(Hovering ? imageHover : imagePointer, Position, color);
+            sb.Draw(Image, Position, color);
         }
 
         public MouseState GetState() {
@@ -61,11 +57,18 @@ namespace Battle_Reign {
         public bool Hovering { get; set; }
         public bool Enabled { get; set; }
         public bool LeftMouseDown { get; set; }
+        public bool RightMouseDown { get; set; }
 
         public bool CanPress { get; set; }
 
+        public Texture2D Image { get; set; }
+        public Texture2D ImageNormal { get; set; }
+        public Texture2D ImageClick { get; set; }
+
         public Vector2 Position { get; set; }
+
         public Point Size { get; set; }
+
         public Rectangle Hitbox { get; set; }
     }
 }

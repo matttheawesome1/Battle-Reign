@@ -9,26 +9,33 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public abstract class Block : GameObject {
-        public Block(Texture2D image, Vector2 position, Point spriteCoords, Point spriteSize) {
+        public Block(Texture2D image, Point coords, Point spriteCoords, Point spriteSize) {
             Spritesheet = image;
 
-            Position = position;
+            Position = coords.ToVector2() * new Vector2(TileWidth);
+            Coordinates = coords;
             SpriteCoords = spriteCoords;
             SpriteSize = spriteSize;
+
+            Hitbox = new Rectangle(Position.ToPoint(), SpriteSize);
         }
 
         public virtual void Update(GameTime gt) {
-            
+            Hitbox = new Rectangle(Position.ToPoint(), SpriteSize);
         }
 
         public virtual void Draw(SpriteBatch sb) {
-            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y + (TileWidth - SpriteSize.Y * (TileWidth / 3))), new Rectangle(new Point(SpriteCoords.X * (TileWidth / 3), SpriteCoords.Y * (TileWidth / 3)), new Point(SpriteSize.X * (TileWidth / 3), SpriteSize.Y * (TileWidth / 3))), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, 0f);
+            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y + (TileWidth - SpriteSize.Y * Cell)), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(SpriteSize.X * Cell, SpriteSize.Y * Cell)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, BuildingLayer);
         }
 
         public bool Passable { get; set; }
 
         public Vector2 Position { get; set; }
+
         public Point SpriteCoords { get; set; }
         public Point SpriteSize { get; set; }
+        public Point Coordinates { get; set; }
+
+        public Rectangle Hitbox { get; set; }
     }
 }

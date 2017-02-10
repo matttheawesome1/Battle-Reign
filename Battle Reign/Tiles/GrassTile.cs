@@ -130,7 +130,7 @@ namespace Battle_Reign {
                 for (int j = 0; j < Values.GetLength(1); j++) {
                     sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * Cell, Position.Y + (j + 1) * Cell), 
                         new Rectangle(new Vector2(Cell * (float) Math.Floor((float) Values[i, j] / 3), Cell * (float) Math.Floor((float) Values[i, j] % 3)).ToPoint(), 
-                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(TileWidth * .33f), 1f, SpriteEffects.None, 0f);
+                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(TileWidth * .33f), 1f, SpriteEffects.None, TileLayer);
                 }
             }
 

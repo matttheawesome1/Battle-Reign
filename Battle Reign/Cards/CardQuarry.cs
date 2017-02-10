@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class CardQuarry : Card {
-        public CardQuarry(int tileWidth, int padding, List<Card> hand, Tile[,] tiles) : base("QUARRY", "Mines for stone", "", "g150", tileWidth, padding, hand, tiles, DefaultCoords, DefaultSize) {
+        public CardQuarry(int padding, int spacing, List<Card> hand, Team team, World world, Save save) : base("QUARRY", "Mines for stone", "", "g150", padding, spacing, hand, world, save, team, new Point(0, SpritesheetSize.Y - DefaultSize.Y), DefaultSize, BuildingColor, CardType.BUILDING) {
 
         }
 
-        public override void Update(GameTime gt, bool hovering) {
+        public override void Update(GameTime gt) {
 
 
-            base.Update(gt, hovering);
+            base.Update(gt);
         }
 
         public override void Draw(SpriteBatch sb) {

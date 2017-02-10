@@ -17,8 +17,7 @@ namespace Battle_Reign {
 
             TileWidth = 36;
 
-            ExitButton = new Button(true, "exit/small", new Vector2(Camera.Position.X + Graphics.PreferredBackBufferWidth - 90, Camera.Position.Y + 10), (s, e) => Parent.Action = Action.EXIT, "square/small");
-            GenerateButton = new Button(true, "refresh/small", new Vector2(Camera.Position.X + Graphics.PreferredBackBufferWidth - 180, Camera.Position.Y + 10), (s, e) => GenerateMap(), "square/small");
+            Padding = 12;
 
             if (size.X < 0) size.X = 0;
             else if (size.X > MaxSize.X) size.X = MaxSize.X;
@@ -28,18 +27,25 @@ namespace Battle_Reign {
 
             size = new Point(size.X * TileWidth, size.Y * TileWidth);
 
-            World = new World(size);
+            World = new World(size, this, parent);
 
             Team[] teams = new Team[3];
             Teams = teams;
-
+            
             World.GenerateMap(Teams);
             CurrentTeam = Teams[0];
-            
+
+            foreach (Team t in Teams) {
+                t.Base.SpawnUnit();
+            }
+
+            Teams.Cast<Team>().ToList().ForEach(x => x.TurnTime = TurnTime);
+
+            EndTurnButton = new Button(true, "END TURN", "silkscreen/small", new Vector2(0), (s, e) => SwitchTeam(), "wide/tiny");
         }
 
         public void Update(GameTime gt) {
-            if (Time > TurnTime) {
+            if (Time >= TurnTime) {
                 Time = 0f;
                 SwitchTeam();
             }
@@ -50,32 +56,28 @@ namespace Battle_Reign {
 
             CurrentTeam.Update(gt);
 
-            ExitButton.Position = new Vector2(Camera.Position.X + Graphics.PreferredBackBufferWidth - 90, Camera.Position.Y + 10);
-            ExitButton.Update(gt);
+            EndTurnButton.Update(gt);
 
-            GenerateButton.Position = new Vector2(Camera.Position.X + Graphics.PreferredBackBufferWidth - 180, Camera.Position.Y + 10);
-            GenerateButton.Update(gt);
+            if (TeamPopup != null) {
+                TeamPopup.Update(gt);
+
+                if (TeamPopup.Finished) {
+                    TeamPopup = null;
+                }
+            }
         }
 
         public void Draw(SpriteBatch sb) {
             World.Draw(sb);
 
             CurrentTeam.Draw(sb);
+            EndTurnButton.Position = new Vector2(Graphics.PreferredBackBufferWidth - EndTurnButton.Background.Width - Padding, Graphics.PreferredBackBufferHeight - EndTurnButton.Background.Height - Padding);
 
-            int padding = 20, height = (int) (padding * 8.2);
+            EndTurnButton.Draw(sb);
 
-            sb.Draw(BlankPixel, Camera.Position, new Rectangle(0, 0, Graphics.PreferredBackBufferWidth, height), new Color(62, 6, 6));
-            sb.Draw(BlankPixel, new Vector2(Camera.Position.X + padding, Camera.Position.Y + padding), new Rectangle(0, 0, Graphics.PreferredBackBufferWidth - padding * 2, height - 50 - padding * 2), new Color(129, 21, 21));
-            sb.Draw(BlankPixel, new Vector2(Camera.Position.X + padding, Camera.Position.Y + padding + height - 50 - padding), new Rectangle(0, 0, Graphics.PreferredBackBufferWidth - padding * 2, 30), new Color(129, 21, 21));
-
-            int left = 0;
-
-            for (int i = 0; i < Teams.Length; i++) {
-                sb.Draw(Spritesheet, new Vector2(Camera.Position.X + padding * 2, Camera.Position.Y + padding * 2), new Rectangle(new Point((Teams[i].SpriteCoords.X + 3) * Cell, 0), new Point(Teams[i].SpriteSize.X * Cell, 2 * Cell)), Teams[i].Color);
+            if (TeamPopup != null) {
+                TeamPopup.Draw(sb);
             }
-
-            ExitButton.Draw(sb);
-            //GenerateButton.Draw(sb);
         }
 
         public void GenerateMap() {
@@ -83,27 +85,43 @@ namespace Battle_Reign {
         }
 
         public void SwitchTeam() {
+            CurrentTeam.Increase();
+
             int index = Array.IndexOf(Teams, CurrentTeam);
 
             if (index + 1 > Teams.Length - 1)
                 CurrentTeam = Teams[0];
             else
                 CurrentTeam = Teams[index + 1];
+
+            CurrentTeam.Time = 0;
+            Time = 0;
+            CurrentTeam.Cards.ForEach(x => x.Position = x.HoverPosition + new Vector2(0, Utilities.Next(0, 60)));
+
+            foreach (Unit u in World.Units) {
+                if (u.Team == CurrentTeam)
+                    u.ReplenishMoves();
+            }
+
+            TeamPopup = new Popup(CurrentTeam.Color, 15, 1);
+
+            Camera.Position = CurrentTeam.Base.Position - new Vector2(Graphics.PreferredBackBufferWidth / 2 - (CurrentTeam.Base.SpriteSize.X * Cell) / 2, Graphics.PreferredBackBufferHeight / 2 - (CurrentTeam.Base.SpriteSize.Y * Cell) / 2);
         }
 
         public string Name { get; set; }
         
+        public int Padding { get; set; }
+
         public float Time { get; set; }
         public float TurnTime {
-            get { return 5; }
+            get { return 30; }
         }
+
+        public Button EndTurnButton { get; set; }
 
         public Point MaxSize {
-            get { return new Point(60); }
+            get { return new Point(100); }
         }
-
-        public Button ExitButton { get; set; }
-        public Button GenerateButton { get; set; }
 
         public World World { get; set; }
 
@@ -112,5 +130,7 @@ namespace Battle_Reign {
         public Team[] Teams { get; set; }
 
         public Team CurrentTeam { get; set; }
+
+        public Popup TeamPopup { get; set; }
     }
 }
