@@ -132,8 +132,9 @@ namespace Battle_Reign {
 
             Hitbox = new Rectangle(new Point((int) Position.X, (int) Position.Y), Hitbox.Size);
         }
-
+        //
         public virtual void Draw(SpriteBatch sb) {
+            sb.Draw(Spritesheet, Position + new Vector2(SpriteSize.X * Cell / 2 - 12, -15), new Rectangle(new Point(SpritesheetSize.X - 3, 10) * new Point(Cell), new Point(2 * Cell)), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
             sb.Draw(Spritesheet, Position + new Vector2(SpriteSize.X * Cell / 2 - 12, -15), new Rectangle(new Point(SpritesheetSize.X - 3, 0) * new Point(Cell), new Point(2 * Cell)), Team.Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
 
             if (Selected) {
