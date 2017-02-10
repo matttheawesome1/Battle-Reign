@@ -15,7 +15,7 @@ namespace Battle_Reign {
 
             Buttons = new List<Button>() {
                 new Button(false, "play/small", new Vector2(Graphics.PreferredBackBufferWidth * .25f, Graphics.PreferredBackBufferHeight /2), (s, e) => Action = Action.CHANGESTATE, "square/small"),
-                new Button(false, "settings/small", new Vector2(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2), null, "square/small"),
+                new Button(false, "settings/small", new Vector2(Graphics.PreferredBackBufferWidth * .5f, Graphics.PreferredBackBufferHeight / 2), null, "square/small"),
                 new Button(false, "exit/small", new Vector2(Graphics.PreferredBackBufferWidth * .75f, Graphics.PreferredBackBufferHeight / 2), (s, e) => Action = Action.EXIT, "square/small"),
             };
 
