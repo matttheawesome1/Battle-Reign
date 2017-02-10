@@ -79,7 +79,8 @@ namespace Battle_Reign {
 
             EndTurnButton.Draw(sb);
 
-            if (TeamPopup != null) {
+            if (TeamPopup != null)
+            {
                 TeamPopup.Draw(sb);
             }
         }

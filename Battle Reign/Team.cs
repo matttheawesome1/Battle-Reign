@@ -124,13 +124,14 @@ namespace Battle_Reign {
         }
 
         public void Draw(SpriteBatch sb) {
-            // FOG OF WAR
+            //FOG OF WAR
 
-            foreach (Tile t in UndiscoveredTiles) {
+            foreach (Tile t in UndiscoveredTiles)
+            {
                 t.Draw(sb);
             }
 
-            // GUI
+            //GUI
 
             int padding = 10, height = padding * 5, offset = 3;
 
@@ -143,23 +144,24 @@ namespace Battle_Reign {
             ExitButton.Position = new Vector2(Graphics.PreferredBackBufferWidth - padding - ExitButton.Background.Width, height + padding);
             ExitButton.Draw(sb);
 
-            // STATS
+            //STATS
 
             int left = 40, margin = 0;
 
-            for (int i = 0; i < Stats.Count; i++) {
+            for (int i = 0; i < Stats.Count; i++)
+            {
                 sb.Draw(Spritesheet, Camera.Position + new Vector2(padding + left + margin, padding + offset), new Rectangle(Stats[i].SpriteCoords, Stats[i].SpriteSize), Color.White, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
-                
+
                 sb.DrawString(Stats[i].Font, Stats[i].Text, Camera.Position + new Vector2(padding + left + margin + Stats[i].SpriteSize.X + 12, padding + offset), Color.White);
 
                 margin += Stats[i].Width;
             }
 
-            sb.DrawString(FontSmall, ((int) (TurnTime - Time)).ToString(), Camera.Position + new Vector2(Graphics.PreferredBackBufferWidth - padding - FontSmall.MeasureString(((int) (TurnTime - Time)).ToString()).X - offset * 2, padding + offset), Color.White);
+            sb.DrawString(FontSmall, ((int)(TurnTime - Time)).ToString(), Camera.Position + new Vector2(Graphics.PreferredBackBufferWidth - padding - FontSmall.MeasureString(((int)(TurnTime - Time)).ToString()).X - offset * 2, padding + offset), Color.White);
 
             AddCardButton.Draw(sb);
 
-            // CARDS
+            //CARDS
 
             Cards.ForEach(x => x.Draw(sb));
             if (HoveringCard != null) HoveringCard.Draw(sb);
