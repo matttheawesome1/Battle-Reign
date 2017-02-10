@@ -301,10 +301,7 @@ namespace Battle_Reign {
             GenerateTiles();
             GenerateBlocks();
 
-            bool cont = true;
-
             for (int i = 0; i < teams.Length; i++) {
-                cont = true;
 
                 teams[i] = new Team("Player " + i, 0, new Point(), this, Save, Scene);
 
