@@ -187,3 +187,4 @@ C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\obj\x86\Debug\Battl
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\XtraLarge.xnb
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouse.xnb
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouseHover.xnb
+C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\font90.xnb

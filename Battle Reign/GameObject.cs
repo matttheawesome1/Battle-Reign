@@ -28,6 +28,7 @@ namespace Battle_Reign {
             FontMedium = Content.Load<SpriteFont>("fonts/silkscreen/medium");
             FontLarge = Content.Load<SpriteFont>("fonts/silkscreen/large");
             FontTiny = Content.Load<SpriteFont>("fonts/silkscreen/tiny");
+            Font90 = Content.Load<SpriteFont>("fonts/silkscreen/font90");
         }
 
         public virtual void Click() {
@@ -90,6 +91,7 @@ namespace Battle_Reign {
         public static Texture2D Spritesheet { get; set; }
 
         public static SpriteFont FontLarge { get; set; }
+        public static SpriteFont Font90 { get; set; }
         public static SpriteFont FontMedium { get; set; }
         public static SpriteFont FontSmall { get; set; }
         public static SpriteFont FontTiny { get; set; }

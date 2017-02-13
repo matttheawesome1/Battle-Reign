@@ -385,3 +385,9 @@
 /processorParam:TextureFormat=Color
 /build:backgrounds\mainmenu.png
 
+#begin fonts/silkscreen/font90.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/silkscreen/font90.spritefont
+
