@@ -30,7 +30,7 @@ namespace Battle_Reign {
             graphics.SynchronizeWithVerticalRetrace = false;
             
             Window.IsBorderless = true;
-            Window.Title = "Civive";
+            Window.Title = "Battle Reign";
 
             IsFixedTimeStep = false;
         }

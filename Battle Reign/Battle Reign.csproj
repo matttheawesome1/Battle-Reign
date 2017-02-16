@@ -59,8 +59,6 @@
     <Compile Include="GameMouse.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Buildings\Mine.cs" />
-    <Compile Include="Pathfinding\PriorityQueue.cs" />
-    <Compile Include="Pathfinding\SpatialAStar.cs" />
     <Compile Include="Popup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +67,7 @@
     <Compile Include="Scenes\SceneGame.cs" />
     <Compile Include="Scenes\SceneMainMenu.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Scenes\SceneSettings.cs" />
     <Compile Include="Stat.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="Tiles\DirtTile.cs" />
