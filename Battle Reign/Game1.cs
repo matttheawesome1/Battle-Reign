@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace Battle_Reign {
     /// <summary>
@@ -16,7 +17,7 @@ namespace Battle_Reign {
 
         SceneManager sm;
 
-        int fps = 0, tempFPS = 0, previousScrollValue;
+        int fps = 0, tempFPS = 0;
 
         float elapsed = 0f;
 
@@ -47,8 +48,7 @@ namespace Battle_Reign {
 
             GameObject.Initialize(Content, graphics, camera, mouse);
 
-            sm = new SceneManager(this);
-            sm.AddScene(new SceneMainMenu());
+            sm = new SceneManager(this, new List<Scene>() { new SceneMainMenu(), new SceneSettings() });
 
             base.Initialize();
         }
@@ -86,13 +86,6 @@ namespace Battle_Reign {
             sm.Update(gameTime);
 
             mouse.Update();
-
-            if (Mouse.GetState().ScrollWheelValue < previousScrollValue) {
-                camera.Zoom -= .05f;
-            } else if (Mouse.GetState().ScrollWheelValue > previousScrollValue) {
-                camera.Zoom += .05f;
-            }
-            previousScrollValue = Mouse.GetState().ScrollWheelValue;
 
             base.Update(gameTime);
         }

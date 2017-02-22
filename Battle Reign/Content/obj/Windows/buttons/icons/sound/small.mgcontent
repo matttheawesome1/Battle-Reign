@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/buttons/square/large.png</SourceFile>
-  <SourceTime>2017-02-13T14:16:07.9428619-05:00</SourceTime>
-  <DestFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/bin/Windows/buttons/square/large.xnb</DestFile>
-  <DestTime>2017-02-16T14:01:34.9079833-05:00</DestTime>
+  <SourceFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/buttons/icons/sound/small.png</SourceFile>
+  <SourceTime>2017-02-16T13:49:49.2879188-05:00</SourceTime>
+  <DestFile>C:/Users/Matthew.Zelenka/Downloads/Battle Reign/Battle Reign/Content/bin/Windows/buttons/icons/sound/small.xnb</DestFile>
+  <DestTime>2017-02-16T14:01:34.9861097-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -12,10 +12,19 @@ namespace Battle_Reign
     {
         public SceneSettings() : base("Settings")
         {
-            SettingsButtons = new List<Button>()
-            {
-                new Battle_Reign.Button(true, )
-            };
+
+            //SettingsButtons = new List<Button>()
+            //{
+            //    //new Button(false, "icons/sound", new Vector2(1), (s, e) => , "square/small"),
+            //    //new Button(false, "icons/video", new Vector2(2), (s, e) => , "square/small"),
+            //    //new Button(false, "icons/video", new Vector2(3), (s, e) =>, "square/small")
+            //};
+
+            //TabManager Manager = new TabManager();
+            //List<Option> videoOptions = new List<Option>
+            //{
+            //    new Slider("")
+            //}
         }
 
         public override void Update(GameTime gt)
@@ -28,6 +37,6 @@ namespace Battle_Reign
 
         }
 
-    public List<Button> SettingsButtons { get; set; }
+        public Button SettingsButtons { get; set; }
     }
 }

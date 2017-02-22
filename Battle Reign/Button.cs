@@ -257,7 +257,7 @@ namespace Battle_Reign {
             Clicked = false;
         }
 
-        public void Draw(SpriteBatch sb) {
+        public virtual void Draw(SpriteBatch sb) {
             if (!HasBackground) {
                 sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), Size), Hovering ? SecondaryColor : PrimaryColor);
                 sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + new Vector2(Position.X + BorderWidth, Position.Y + BorderWidth).ToPoint(), new Point(Size.X - BorderWidth * 2, Size.Y - BorderWidth * 2)), Hovering ? PrimaryColor : SecondaryColor);

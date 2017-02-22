@@ -34,38 +34,7 @@ namespace Battle_Reign {
             HitboxSize = hitboxSize;
             Hitbox = new Rectangle(new Point((int) Position.X, (int) Position.Y), hitboxSize * new Point(Cell));
         }
-        public void GenerateGrid() {
-            Point gridSize = World.Size / new Point(TileWidth);
 
-            Grid = new MyPathNode[gridSize.X, gridSize.Y];
-
-            for (int x = 0; x < gridSize.X; x++) {
-                for (int y = 0; y < gridSize.Y; y++) {
-                    Grid[x, y] = new MyPathNode() {
-                        IsWall = false,
-                        X = x,
-                        Y = y,
-                    };
-                }
-            }
-
-            UpdateGrid();
-
-            AStar = new SpatialAStar<MyPathNode, Object>(Grid);
-
-            Path = null;
-        }
-        public void UpdateGrid() {
-            Grid.Cast<MyPathNode>().ToList().ForEach(x => x.IsWall = false);
-
-            foreach (Point p in World.GetWalls(World.GetCoordinates(Position), MoveRange)) {
-                Grid[p.X, p.Y] = new MyPathNode() {
-                    IsWall = true,
-                    X = p.X,
-                    Y = p.Y,
-                };
-            }
-        }
         public void Move(Point destination) {
             Selected = false;
             Moving = true;
@@ -219,10 +188,6 @@ namespace Battle_Reign {
         }
 
         public Team Team { get; set; }
-
-        public SpatialAStar<MyPathNode, Object> AStar { get; set; }
-        public LinkedList<MyPathNode> Path { get; set; }
-        public MyPathNode[,] Grid { get; set; }
 
         public Color ColorAvailable {
             get { return Color.FromNonPremultiplied(68, 47, 161, 100); }
