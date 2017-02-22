@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Input;
 namespace Battle_Reign {
     public class Save : GameObject {
         public Save(string name, Point size, Scene parent) {
+            Debug.Initialize();
+
             Name = name;
             Time = 0;
 
@@ -46,6 +48,10 @@ namespace Battle_Reign {
         }
 
         public void Update(GameTime gt) {
+            KeyboardState kState = Keyboard.GetState();
+
+            Debug.Update(Mouse);
+
             if (Time >= TurnTime) {
                 Time = 0f;
                 SwitchTeam();

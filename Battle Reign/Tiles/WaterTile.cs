@@ -20,7 +20,7 @@ namespace Battle_Reign {
         public override void Draw(SpriteBatch sb) {
             //sb.Draw(Spritesheet, Position, Color.White);
             //sb.Draw(Spritesheet, new Rectangle(Position.ToPoint(), new Point(TileWidth)), null, Color.White);
-            sb.Draw(Spritesheet, Position, new Rectangle(new Point(SpriteCoords.X * (Cell), SpriteCoords.Y * (Cell)), new Point((Cell) * SpriteSize.X, (Cell) * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, TileLayer);
+            sb.Draw(Spritesheet, Position, new Rectangle(new Point(SpriteCoords.X * (Cell), SpriteCoords.Y * (Cell)), new Point((Cell) * SpriteSize.X, (Cell) * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, 1);
 
             base.Draw(sb);
         }

@@ -28,6 +28,7 @@ namespace Battle_Reign {
             FontMedium = Content.Load<SpriteFont>("fonts/silkscreen/medium");
             FontLarge = Content.Load<SpriteFont>("fonts/silkscreen/large");
             FontTiny = Content.Load<SpriteFont>("fonts/silkscreen/tiny");
+            Font15 = Content.Load<SpriteFont>("fonts/silkscreen/font15");
         }
 
         public virtual void Click() {
@@ -62,16 +63,6 @@ namespace Battle_Reign {
 
         public int Level { get; set; }
 
-        public static float TileLayer {
-            get { return .1f; }
-        }
-        public static float BuildingLayer {
-            get { return .2f; }
-        }
-        public static float UnitLayer {
-            get { return .11f; }
-        }
-
         public static int TileWidth { get; set; }
         public static int Cell {
             get { return TileWidth / 3; }
@@ -93,6 +84,7 @@ namespace Battle_Reign {
         public static SpriteFont FontMedium { get; set; }
         public static SpriteFont FontSmall { get; set; }
         public static SpriteFont FontTiny { get; set; }
+        public static SpriteFont Font15 { get; set; }
 
         public static List<GameObject> ObjectsClicked { get; set; }
         public static List<Type> Types { get; set; }

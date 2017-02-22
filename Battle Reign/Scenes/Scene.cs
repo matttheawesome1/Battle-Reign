@@ -8,6 +8,8 @@ namespace Battle_Reign {
     public abstract class Scene : GameObject {
         public Scene(string name) {
             Name = name;
+
+            State = State.FORWARD;
         }
 
         public virtual void Update(GameTime gt) {
@@ -21,11 +23,19 @@ namespace Battle_Reign {
         public string Name { get; set; }
 
         public Action Action { get; set; }
+        public State State { get; set; }
     }
 
     public enum Action {
         IDLE,
         CHANGESTATE,
         EXIT
+    }
+    public enum State {
+        MAINMENU,
+        GAME,
+        SETTINGS,
+        BACK,
+        FORWARD
     }
 }

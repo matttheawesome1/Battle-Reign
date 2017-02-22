@@ -90,8 +90,8 @@ namespace Battle_Reign {
             if (Scrolling) {
                 Camera.Position = new Vector2(Camera.Position.X + (OriginalClick.X - Mouse.Position.X), Camera.Position.Y + (OriginalClick.Y - Mouse.Position.Y));
 
-                Camera.Position = new Vector2(Camera.Position.X < 0 - Padding ? 0 - Padding : Camera.Position.X, Camera.Position.Y > Size.Y - Graphics.PreferredBackBufferHeight + Padding ? Size.Y - Graphics.PreferredBackBufferHeight + Padding : Camera.Position.Y);
-                Camera.Position = new Vector2(Camera.Position.X > Size.X - Graphics.PreferredBackBufferWidth + Padding ? Size.X + Padding - Graphics.PreferredBackBufferWidth : Camera.Position.X, Camera.Position.Y < 0 - Padding ? 0 - Padding : Camera.Position.Y);
+                //Camera.Position = new Vector2(Camera.Position.X < 0 - Padding ? 0 - Padding : Camera.Position.X, Camera.Position.Y > Size.Y - Graphics.PreferredBackBufferHeight + Padding ? Size.Y - Graphics.PreferredBackBufferHeight + Padding : Camera.Position.Y);
+                //Camera.Position = new Vector2(Camera.Position.X > Size.X - Graphics.PreferredBackBufferWidth + Padding ? Size.X + Padding - Graphics.PreferredBackBufferWidth : Camera.Position.X, Camera.Position.Y < 0 - Padding ? 0 - Padding : Camera.Position.Y);
 
                 Mouse.CanPress = false;
             }
@@ -311,11 +311,10 @@ namespace Battle_Reign {
                     int x = Utilities.Next(0, Tiles.GetLength(0) - 1), y = Utilities.Next(0, Tiles.GetLength(1) - 1);
 
                     foreach(Team t in teams) {
-                        if (Tiles[x, y] != null & IsTileAvailable(new Point(x, y)) && Utilities.Distance(Tiles[x, y].Coordinates, t.Base.Coordinates) > 20) {
+                        if (Tiles[x, y] != null & IsTileAvailable(new Point(x, y)) && Utilities.Distance(Tiles[x, y].Coordinates, t.Base.Coordinates) > 5) {
                             teams[i].Base.Position = new Vector2(x * TileWidth, y * TileWidth);
                             teams[i].Base.Coordinates = teams[i].Base.Position.ToPoint() / new Point(TileWidth);
                             Buildings.Add(teams[i].Base);
-                            Console.WriteLine(teams[i].Base.Coordinates);
 
                             quit = true;
 
@@ -356,8 +355,8 @@ namespace Battle_Reign {
                 if (!(t.X <= Buffer - 1 || t.X >= Tiles.GetLength(0) - Buffer || t.Y <= Buffer - 1 || t.Y >= Tiles.GetLength(1) - Buffer)) {
                     int radius = Utilities.Next(0, 5);
 
-                    for (int x = t.X - radius - Utilities.Next(0, 1); x < t.X + radius + Utilities.Next(0, 1); x++) {
-                        for (int y = t.Y - radius - Utilities.Next(0, 1); y < t.Y + radius + Utilities.Next(0, 1); y++) {
+                    for (int x = t.X - radius - Utilities.Next(-1, 0); x < t.X + radius + Utilities.Next(0, 1); x++) {
+                        for (int y = t.Y - radius - Utilities.Next(1, 2); y < t.Y + radius + Utilities.Next(1, 2); y++) {
                             if (!(x <= Buffer - 1 || x >= Tiles.GetLength(0) - Buffer || y <= Buffer - 1 || y >= Tiles.GetLength(1) - Buffer) && Utilities.Distance(Tiles[x, y].Coordinates, t.Coordinates) <= radius) {
                                 Tiles[x, y] = new WaterTile(new Vector2(x, y) * TileWidth, Tiles);
                             }

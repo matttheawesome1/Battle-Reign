@@ -36,6 +36,7 @@ namespace Battle_Reign {
             MouseState state = GetState();
 
             CanPress = !LeftMouseDown;
+            CanType = Keyboard.GetState().GetPressedKeys().Length == 0;
 
             Position = Enabled ? new Vector2(state.Position.X + Camera.Position.X, state.Position.Y + Camera.Position.Y) : Position;
             Hitbox = new Rectangle(Position.ToPoint(), Size);
@@ -47,7 +48,7 @@ namespace Battle_Reign {
         }
 
         public void Draw(SpriteBatch sb) {
-            sb.Draw(Image, Position, color);
+            sb.Draw(Image, Position, null, color, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
         }
 
         public MouseState GetState() {
@@ -60,6 +61,7 @@ namespace Battle_Reign {
         public bool RightMouseDown { get; set; }
 
         public bool CanPress { get; set; }
+        public bool CanType { get; set; }
 
         public Texture2D Image { get; set; }
         public Texture2D ImageNormal { get; set; }

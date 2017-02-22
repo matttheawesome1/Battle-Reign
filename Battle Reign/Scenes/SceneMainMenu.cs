@@ -15,6 +15,10 @@ namespace Battle_Reign {
                 new Button(false, "exit/small", new Vector2(250, 50), (s, e) => Action = Action.EXIT, "square/small"),
             };
         }
+        public void ChangeState(Action action, State state) {
+            Action = action;
+            State = state;            
+        }
 
         public override void Update(GameTime gt) {
             Buttons.ForEach(x => x.Update(gt));

@@ -18,6 +18,12 @@ namespace Battle_Reign {
             Scenes = new List<Scene>() { scene };
             CurrentScene = Scenes[0];
         }
+        public SceneManager(Game game, List<Scene> scenes) {
+            Game = game;
+
+            Scenes = scenes;
+            CurrentScene = Scenes[0];
+        }
 
         public void Update(GameTime gt) {
             Mouse.Hovering = false;
@@ -26,6 +32,19 @@ namespace Battle_Reign {
 
             switch (CurrentScene.Action) {
                 case (Action.CHANGESTATE):
+                    /*switch (CurrentScene.State) {
+                        case (State.BACK):
+                            SwitchScene(false);
+
+                            break;
+                        case (State.FORWARD):
+                            SwitchScene(true);
+
+                            break;
+                        default:
+                            break;
+                    }*/
+
                     CurrentScene = new SceneGame();
 
                     break;
@@ -36,6 +55,8 @@ namespace Battle_Reign {
                 default:
                     break;
             }
+
+            CurrentScene.Action = Action.IDLE;
         }
 
         public void Draw(SpriteBatch sb) {
@@ -53,6 +74,17 @@ namespace Battle_Reign {
         }
         public void AddScene(Scene s) {
             Scenes.Add(s);
+        }
+        public void SwitchScene(bool forward) {
+            if (forward) {
+                if (Array.IndexOf(Scenes.ToArray(), CurrentScene) != Scenes.Count - 1){
+                    CurrentScene = Scenes[Array.IndexOf(Scenes.ToArray(), CurrentScene) + 1];
+                }
+            } else {
+                if (Array.IndexOf(Scenes.ToArray(), CurrentScene) != 0) {
+                    CurrentScene = Scenes[Array.IndexOf(Scenes.ToArray(), CurrentScene) - 1];
+                }
+            }
         }
 
         public Scene CurrentScene { get; set; }

@@ -48,7 +48,6 @@ namespace Battle_Reign {
             GameObject.Initialize(Content, graphics, camera, mouse);
 
             sm = new SceneManager(this);
-            sm.AddScene(new SceneMainMenu());
 
             base.Initialize();
         }

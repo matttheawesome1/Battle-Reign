@@ -10,6 +10,16 @@ namespace Battle_Reign {
     public class GrassTile : Tile {
         public GrassTile(Vector2 position, Tile[,] tiles) : base(Content.Load<Texture2D>("tiles/spritesheet"), position, tiles, Point.Zero, new Point(3, 3)) {
             Values = new TextureSpot[3, 3] { { TextureSpot.TOPLEFT, TextureSpot.TOPMID, TextureSpot.TOPRIGHT }, { TextureSpot.MIDLEFT, TextureSpot.MIDMID, TextureSpot.MIDRIGHT }, { TextureSpot.BOTLEFT, TextureSpot.BOTMID, TextureSpot.BOTRIGHT} };
+
+            Texture = new Texture2D(Graphics.GraphicsDevice, TileWidth, TileWidth);
+
+            Color[] ssData = new Color[Spritesheet.Width * Spritesheet.Height];
+            Spritesheet.GetData<Color>(ssData);
+
+            Rectangle rectangle = new Rectangle(SpriteCoords * new Point(Cell), new Point(TileWidth));
+
+            Color[] data = new Color[rectangle.Width * rectangle.Height];
+            Spritesheet.GetData(0, rectangle, data, 0, data.Length);
         }
 
         public override void Update(GameTime gt) {
@@ -121,21 +131,59 @@ namespace Battle_Reign {
             if (Tiles[X, Y + 1].GetType() != typeof(WaterTile)) {
                 Values[1, 2] = TextureSpot.MIDMID;
             }
+
+            /*for (int i = 0; i < Values.GetLength(0); i++) {
+                for (int j = 0; j < Values.GetLength(1); j++) {
+                    for (int x = 0; x < Cell; x++) {
+                        for (int y = 0; y < Cell; y++) {
+                            data[(x + (i * Cell)) * (y + (j * Cell))] = ssData[((SpriteCoords.X * Cell) + (x + (i * Cell))) * ((SpriteCoords.Y * Cell) * (y + (j * Cell)))];
+                            //Console.WriteLine((SpriteCoords.Y * Cell) + " + " + (y + (Cell * j)) + " = " + (SpriteCoords.Y * Cell + ((y + (Cell * j)))) + " at (" + (x + (Cell * i)) + ", " + (y + (Cell * j)) + ")");
+                        }
+                    }
+                }
+            }*/
+
+            // DO ^^^^^^^^ WITH CURRENT TEXTURE
+
+            /*Rectangle rectangle = new Rectangle(SpriteCoords * new Point(Cell), new Point(TileWidth));
+            
+            Color[] data = new Color[rectangle.Width * rectangle.Height];
+            Texture.GetData(0, rectangle, data, 0, data.Length);
+
+            Color[] ssData = new Color[rectangle.Width * rectangle.Height];
+            Spritesheet.GetData(ssData);
+
+            for (int i = 0; i < Values.GetLength(0); i++) {
+                for (int j = 0; j < Values.GetLength(1); j++) {
+                    for (int x = 0; x < Cell; x++) {
+                        for (int y = 0; y < Cell; y++) {
+                            //data[(Cell * i + x) * y] = ssData[(((((int) Values[i, j] * Cell) / 3)) + x) * (((int) Values[i, j] % 3) * 3 + y)];
+
+                            //Console.WriteLine(((Cell * i + x) * y));
+                        }
+                    }
+                }
+            }
+            
+            Texture.SetData(data);*/
         }
 
         public override void Draw(SpriteBatch sb) {
-            //sb.Draw(Spritesheet, Position, Color.White);
+            //sb.Draw(Texture, Position, Color.White);
 
             for (int i = 0; i < Values.GetLength(0); i++) {
                 for (int j = 0; j < Values.GetLength(1); j++) {
                     sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * Cell, Position.Y + (j + 1) * Cell), 
                         new Rectangle(new Vector2(Cell * (float) Math.Floor((float) Values[i, j] / 3), Cell * (float) Math.Floor((float) Values[i, j] % 3)).ToPoint(), 
-                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(Cell), 1f, SpriteEffects.None, TileLayer);
+                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(Cell), 1f, SpriteEffects.None, 1);
                 }
             }
 
             base.Draw(sb);
         }
+
+        public Texture2D DefaultTexture { get; set; }
+        public Texture2D Texture { get; set; }
 
         public TextureSpot[,] Values { get; set; }
     }

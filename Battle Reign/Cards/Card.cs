@@ -26,7 +26,7 @@ namespace Battle_Reign {
 
             Costs = new List<string>();
 
-            Padding = padding;
+            Padding = 20;
             Spacing = spacing;
 
             UniqueValue += 1;
@@ -38,12 +38,12 @@ namespace Battle_Reign {
             SpriteCoords = spriteCoords;
             SpriteSize = spriteSize;
 
-            Spacing = 125;
-
             CardSize = new Point(9, 15) * new Point(Cell);
             CardPadding = 4;
 
-            Position = new Vector2(Padding + Index * Spacing, Graphics.PreferredBackBufferHeight - (CardSize.Y) - 35);
+            Spacing = CardSize.X + 20;
+
+            Position = new Vector2(Index * Spacing, Graphics.PreferredBackBufferHeight - (CardSize.Y) - 20);
             HoverPosition = new Vector2(Position.X, Position.Y - 100);
             OriginalPosition = Position;
 
@@ -75,7 +75,7 @@ namespace Battle_Reign {
 
             Hovering = Mouse.Hitbox.Intersects(Hitbox);
 
-            Position -= new Vector2((Position.X - (Padding + Index * Spacing)) * 13 * (float) gt.ElapsedGameTime.TotalSeconds, 0);
+            Position -= new Vector2((Position.X - ((Index + 1) * Spacing + Padding)) * 13 * (float) gt.ElapsedGameTime.TotalSeconds, 0);
             
             MouseState state = Mouse.GetState();
             
