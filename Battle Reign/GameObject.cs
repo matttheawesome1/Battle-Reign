@@ -29,6 +29,7 @@ namespace Battle_Reign {
             FontLarge = Content.Load<SpriteFont>("fonts/silkscreen/large");
             FontTiny = Content.Load<SpriteFont>("fonts/silkscreen/tiny");
             Font15 = Content.Load<SpriteFont>("fonts/silkscreen/font15");
+            Font90 = Content.Load<SpriteFont>("fonts/silkscreen/font90");
         }
 
         public virtual void Click() {
@@ -85,6 +86,7 @@ namespace Battle_Reign {
         public static SpriteFont FontSmall { get; set; }
         public static SpriteFont FontTiny { get; set; }
         public static SpriteFont Font15 { get; set; }
+        public static SpriteFont Font90 { get; set; }
 
         public static List<GameObject> ObjectsClicked { get; set; }
         public static List<Type> Types { get; set; }

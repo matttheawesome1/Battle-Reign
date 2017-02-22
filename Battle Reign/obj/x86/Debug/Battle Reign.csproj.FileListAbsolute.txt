@@ -188,3 +188,4 @@ P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Window
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouse.xnb
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouseHover.xnb
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\font15.xnb
+P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\font90.xnb
