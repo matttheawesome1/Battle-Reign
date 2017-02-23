@@ -189,3 +189,69 @@ P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Window
 P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouseHover.xnb
 C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\font90.xnb
 C:\Users\Matthew.Zelenka\Downloads\Battle Reign\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\sound\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\obj\x86\Debug\Battle Reign.exe
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\obj\x86\Debug\Battle Reign.pdb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\backgrounds\game.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\backgrounds\hud.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\backgrounds\mainmenu.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\blankPixel.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\add\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\add\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\exit\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\exit\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\exit\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\exit\tiny.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\play\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\play\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\play\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\refresh\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\settings\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\settings\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\settings\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\icons\sound\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\square\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\square\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\square\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\square\tiny.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\wide\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\wide\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\wide\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\buttons\wide\tiny.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\font90.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\large.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\medium.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\small.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\tiny.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\fonts\silkscreen\XtraLarge.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\mouse\click.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouse.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\mouse\mouseHover.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\mouse\normal.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\tiles\grass.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\tiles\spritesheet.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\tiles\undiscovered.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\tiles\water.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Content\tiles\grass\grass.xnb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Battle Reign.exe
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\Battle Reign.pdb
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Matthew.Zelenka\Source\Repos\Battle-Reign2\Battle Reign\obj\x86\Debug\Battle Reign.csprojResolveAssemblyReference.cache
