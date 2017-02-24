@@ -50,7 +50,7 @@ namespace Battle_Reign {
         public void Update(GameTime gt) {
             KeyboardState kState = Keyboard.GetState();
 
-            Debug.Update(Mouse);
+            Debug.Update(gt, Mouse);
 
             if (Time >= TurnTime) {
                 Time = 0f;

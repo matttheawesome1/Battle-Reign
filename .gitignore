@@ -1,1 +1,4 @@
+# VS Stuff
 .suo
+/bin/
+.csproj
