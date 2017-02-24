@@ -4,40 +4,40 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/backgrounds/game.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/exit/large.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/exit/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/exit/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/play/large.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/play/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/play/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/refresh/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/settings/large.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/settings/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/settings/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/square/large.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/square/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/square/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/wide/large.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/wide/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/wide/small.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/blankPixel.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/large.spritefont</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/medium.spritefont</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/small.spritefont</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/tiny.spritefont</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/tiles/spritesheet.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/tiles/undiscovered.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/backgrounds/hud.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/wide/tiny.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/exit/tiny.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/square/tiny.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/add/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/buttons/icons/add/medium.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/mouse/click.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/mouse/normal.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/backgrounds/mainmenu.png</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/font15.spritefont</File>
-    <File>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/font90.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/backgrounds/game.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/exit/large.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/exit/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/exit/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/play/large.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/play/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/play/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/refresh/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/settings/large.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/settings/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/settings/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/square/large.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/square/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/square/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/wide/large.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/wide/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/wide/small.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/blankPixel.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/large.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/medium.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/small.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/tiny.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/tiles/spritesheet.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/tiles/undiscovered.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/backgrounds/hud.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/wide/tiny.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/exit/tiny.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/square/tiny.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/add/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/buttons/icons/add/medium.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/mouse/click.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/mouse/normal.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/backgrounds/mainmenu.png</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/font15.spritefont</File>
+    <File>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/font90.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

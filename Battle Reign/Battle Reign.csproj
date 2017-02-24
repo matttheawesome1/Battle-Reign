@@ -69,6 +69,15 @@
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneGame.cs" />
     <Compile Include="Scenes\SceneMainMenu.cs" />
+    <Compile Include="Scenes\SceneSettings.cs" />
+    <Compile Include="Settings Items\Option.cs" />
+    <Compile Include="Settings Items\OptionSection.cs" />
+    <Compile Include="Settings Items\RadioButton.cs" />
+    <Compile Include="Settings Items\RadioGroup.cs" />
+    <Compile Include="Settings Items\Slider.cs" />
+    <Compile Include="Settings Items\Tab.cs" />
+    <Compile Include="Settings Items\TabButton.cs" />
+    <Compile Include="Settings Items\TabManager.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="Tiles\DirtTile.cs" />
