@@ -9,12 +9,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Battle_Reign {
     public class Unit : Placable {
-        public Unit(int visionRange, int moveRange, int maxHealth, Point coords, Point spriteCoords, Point spriteSize, Point hitboxSize, World world) : base(maxHealth, coords.ToVector2() * new Vector2(TileWidth)) {
+        public Unit(int visionRange, int moveRange, int maxHealth, int damage, Point coords, Point spriteCoords, Point spriteSize, Point hitboxSize, World world) : base(maxHealth, coords.ToVector2() * new Vector2(TileWidth)) {
             VisionRange = visionRange;
 
             Speed = 5;
             MoveRange = moveRange;
             MovesAvailable = MoveRange;
+            Damage = damage;
 
             SpriteCoords = spriteCoords;
             SpriteSize = spriteSize;
@@ -39,7 +40,23 @@ namespace Battle_Reign {
 
                 foreach(Point p in World.GetWalls(World.GetCoordinates(OriginalPosition), MovesAvailable)) {
                     if (destination == p) {
+                        bool found = false;
+
+                        foreach(Unit u in World.Units) {
+                            if (u.Coordinates == destination && u.Team != Team) {
+                                found = true;
+
+                                MovesAvailable = 0;
+                                u.Health -= Damage;
+
+                                Console.WriteLine("attack");
+
+                                break;
+                            }
+                        }
+                        
                         available = false;
+
                         break;
                     }
                 }
@@ -69,7 +86,7 @@ namespace Battle_Reign {
             if (Save.CurrentTeam == Team) {
                 float buffer = 1;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.S) && Mouse.CanType)
+                if (Selected && Keyboard.GetState().IsKeyDown(Keys.S) && Mouse.CanType)
                     Health -= MaxHealth / 20;
 
                 if (CanMove && Placed) {
@@ -95,9 +112,10 @@ namespace Battle_Reign {
                 }
             }
 
-            if (Health < 0)
+            if (Health < 0) {
                 Health = 0;
-            else if (Health > MaxHealth)
+                Dead = true;
+            } else if (Health > MaxHealth)
                 Health = MaxHealth;
 
             Hitbox = new Rectangle(new Point((int) Position.X, (int) Position.Y), Hitbox.Size);
@@ -105,53 +123,57 @@ namespace Battle_Reign {
 
         public virtual void Draw(SpriteBatch sb) {
             if (Selected) {
+                List<Point> walls = World.GetWalls(World.GetCoordinates(OriginalPosition), MovesAvailable);
+
                 foreach (Tile t in World.Tiles) {
-                    if (Utilities.Distance(t.Coordinates, World.GetCoordinates(OriginalPosition)) <= MovesAvailable) {
-                        sb.Draw(BlankPixel, new Rectangle(t.Position.ToPoint(), new Point(TileWidth)), ColorAvailable);
+                    if (Utilities.Distance(t.Coordinates, World.GetCoordinates(OriginalPosition)) <= MovesAvailable && !walls.Contains(t.Coordinates)) {
+                        sb.Draw(BlankPixel, new Rectangle(t.Position.ToPoint(), new Point(TileWidth)), null, ColorAvailable, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
                     }
                 }
 
-                foreach (Point p in World.GetWalls(World.GetCoordinates(OriginalPosition), MovesAvailable)) {
+                /*foreach (Point p in World.GetWalls(World.GetCoordinates(OriginalPosition), MovesAvailable)) {
                     if (p != World.GetCoordinates(Position)) sb.Draw(BlankPixel, new Rectangle(p * new Point(TileWidth), new Point(TileWidth)), ColorUnavailable);
-                }
+                }*/
             }
 
             DrawInfo(sb);
 
-            sb.Draw(Spritesheet, Position, new Rectangle(SpriteCoords * new Point(Cell), SpriteSize * new Point(Cell)), Color.White);
+            sb.Draw(Spritesheet, Position, new Rectangle(SpriteCoords * new Point(Cell), SpriteSize * new Point(Cell)), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, UnitLayer);
         }
         public virtual void Draw(SpriteBatch sb, bool available) {
             DrawHitbox(sb, available ? ColorAvailable : ColorUnavailable);
             
-            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White);
+            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, UnitLayer);
         }
         public void DrawHitbox(SpriteBatch sb, Color color) {
             int width = 2;
 
-            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(Hitbox.Width + width, width)), color);
-            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(width, Hitbox.Height + width)), color);
-            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X, Hitbox.Y + Hitbox.Height), new Point(Hitbox.Width, width)), color);
-            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X + Hitbox.Width, Hitbox.Y), new Point(width, Hitbox.Height + width)), color);
+            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(Hitbox.Width + width, width)), null, color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(width, Hitbox.Height + width)), null, color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X, Hitbox.Y + Hitbox.Height), new Point(Hitbox.Width, width)), null, color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X + Hitbox.Width, Hitbox.Y), new Point(width, Hitbox.Height + width)), null, color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
         }
         public void DrawOutline(SpriteBatch sb) {
             int width = 4;
 
-            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(width, TileWidth)), Team.Color);
-            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(TileWidth, width)), Team.Color);
-            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(SpriteSize.X * Cell - width, 0), new Point(width, TileWidth)), Team.Color);
-            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(0, SpriteSize.Y * Cell - width), new Point(TileWidth, width)), Team.Color);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(width, TileWidth)), null, Team.Color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint(), new Point(TileWidth, width)), null, Team.Color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(SpriteSize.X * Cell - width, 0), new Point(width, TileWidth)), null, Team.Color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
+            sb.Draw(BlankPixel, new Rectangle(Moving ? Position.ToPoint() : OriginalPosition.ToPoint() + new Point(0, SpriteSize.Y * Cell - width), new Point(TileWidth, width)), null, Team.Color, 0, Vector2.Zero, SpriteEffects.None, UnitLayer);
         }
 
         public override string ToString() {
             return "(" + Coordinates.X + ", " + Coordinates.Y + ")";
         }
         
+        public int Damage { get; set; }
         public int VisionRange { get; set; }
         public int MoveRange { get; set; }
         public int Amplitude {
             get { return 20; }
         }
 
+        public bool Dead { get; set; }
         public bool Placed { get; set; }
         public bool Selected { get; set; }
         public bool Moving { get; set; }
@@ -163,7 +185,7 @@ namespace Battle_Reign {
         public float T { get; set; }
         public float MovesAvailable { get; set; }
         public float Increment {
-            get { return .1f; }
+            get { return .05f; }
         }
 
         public Point Coordinates {

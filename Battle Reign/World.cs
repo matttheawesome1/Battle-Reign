@@ -101,7 +101,17 @@ namespace Battle_Reign {
             //Tiles.OfType<Tile>().ToList().ForEach(x => x.Update(gt));
             Blocks.ForEach(x => x.Update(gt));
             Buildings.ForEach(x => x.Update(gt));
-            Units.ForEach(x => x.Update(gt));
+            //Units.ForEach(x => x.Update(gt));
+
+            for (int i = 0; i < Units.Count; i++) {
+                Units[i].Update(gt);
+
+                if (Units[i].Dead) {
+                    //Units.RemoveAt(i);
+
+                    //i--;
+                }
+            }
         }
 
         public void Draw(SpriteBatch sb) {

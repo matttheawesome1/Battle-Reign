@@ -259,33 +259,33 @@ namespace Battle_Reign {
 
         public void Draw(SpriteBatch sb) {
             if (!HasBackground) {
-                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), Size), Hovering ? SecondaryColor : PrimaryColor);
-                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + new Vector2(Position.X + BorderWidth, Position.Y + BorderWidth).ToPoint(), new Point(Size.X - BorderWidth * 2, Size.Y - BorderWidth * 2)), Hovering ? PrimaryColor : SecondaryColor);
+                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), Size), null, Hovering ? SecondaryColor : PrimaryColor, 0, Vector2.Zero, SpriteEffects.None, GUILayer);
+                sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + new Vector2(Position.X + BorderWidth, Position.Y + BorderWidth).ToPoint(), new Point(Size.X - BorderWidth * 2, Size.Y - BorderWidth * 2)), null, Hovering ? PrimaryColor : SecondaryColor, 0, Vector2.Zero, SpriteEffects.None, GUILayer);
             }
 
             switch (Type) {
                 case ButtonType.TEXT:
                     if (HasBackground)
-                        sb.Draw(Background, Camera.Position + Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
-                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - Font.MeasureString(Text).Y / 2 + 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - Font.MeasureString(Text).Y / 2 + 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor), 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
                     break;
                 case ButtonType.ICON:
                     if (HasBackground)
-                        sb.Draw(Background, Camera.Position + Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
-                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2), null, HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor), 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
                     break;
                 case ButtonType.BOTH:
                     if (HasBackground)
-                        sb.Draw(Background, Camera.Position + Position, Color.White);
+                        sb.Draw(Background, Camera.Position + Position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
                     int spacing = 10, height = (int) Font.MeasureString(Text).Y + Icon.Height;
 
-                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2 - spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
-                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - 2 + spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor));
+                    sb.Draw(Icon, Camera.Position + new Vector2(Position.X + Size.X / 2 - Icon.Width / 2, Position.Y + Size.Y / 2 - Icon.Height / 2 - spacing), null, HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor), 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
+                    sb.DrawString(Font, Text, Camera.Position + new Vector2(Position.X + Size.X / 2 - Font.MeasureString(Text).X / 2, Position.Y + Size.Y / 2 - 2 + spacing), HasBackground ? Color.White : (Hovering ? SecondaryColor : PrimaryColor), 0, Vector2.Zero, 1 ,SpriteEffects.None, GUILayer);
 
                     break;
                 default:

@@ -191,13 +191,13 @@ namespace Battle_Reign {
         }
 
         public void DrawCard(SpriteBatch sb) {
-            sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), CardSize), SecondaryColor);
-            sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint() + new Vector2(CardPadding).ToPoint(), new Point(CardSize.X, 21) - new Point(CardPadding * 2, 0)), PrimaryColor);
+            sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint(), CardSize), null, SecondaryColor, 0, Vector2.Zero, SpriteEffects.None, GUILayer);
+            sb.Draw(BlankPixel, new Rectangle(Camera.Position.ToPoint() + Position.ToPoint() + new Vector2(CardPadding).ToPoint(), new Point(CardSize.X, 21) - new Point(CardPadding * 2, 0)), null, PrimaryColor, 0, Vector2.Zero, SpriteEffects.None, GUILayer);
 
-            sb.Draw(Spritesheet, Camera.Position + Position + (new Vector2(CardSize.X - SpriteSize.X * Cell - CardPadding - 5, CardPadding * 2)), new Rectangle(SpriteCoords * new Point(Cell), new Point(SpriteSize.X * Cell, SpriteSize.Y * Cell)), Color.White);
+            sb.Draw(Spritesheet, Camera.Position + Position + (new Vector2(CardSize.X - SpriteSize.X * Cell - CardPadding - 5, CardPadding * 2)), new Rectangle(SpriteCoords * new Point(Cell), new Point(SpriteSize.X * Cell, SpriteSize.Y * Cell)), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
 
-            sb.DrawString(FontTiny, Name, Camera.Position + Position + new Vector2(CardPadding + 3), Color.White);
-            sb.DrawString(FontTiny, Desc1, Camera.Position + Position + new Vector2(CardPadding, CardPadding * 2 + 30), Color.Black);
+            sb.DrawString(FontTiny, Name, Camera.Position + Position + new Vector2(CardPadding + 3), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
+            sb.DrawString(FontTiny, Desc1, Camera.Position + Position + new Vector2(CardPadding, CardPadding * 2 + 30), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
         }
 
         public override void Click() {

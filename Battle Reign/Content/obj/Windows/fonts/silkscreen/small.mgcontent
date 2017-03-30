@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/fonts/silkscreen/small.spritefont</SourceFile>
-  <SourceTime>2016-12-06T13:29:17.1389581-05:00</SourceTime>
+  <SourceTime>2016-12-06T13:29:18-05:00</SourceTime>
   <DestFile>P:/Computer Programming/Nicholas.Gilliam/C#/Battle Reign/Battle Reign/Content/bin/Windows/fonts/silkscreen/small.xnb</DestFile>
-  <DestTime>2017-02-10T13:55:44.3076905-05:00</DestTime>
+  <DestTime>2017-03-30T12:54:18.5106574-04:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

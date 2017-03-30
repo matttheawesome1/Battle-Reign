@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Battle_Reign {
     public class SceneGame : Scene { 
         public SceneGame() : base("Game") {
-            Save = new Save("Nick", new Point(60), this);
+            Save = new Save("Nick", new Point(30), this);
             Camera.Zoom = 1f;
         }
 

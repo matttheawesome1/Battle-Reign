@@ -32,6 +32,23 @@ namespace Battle_Reign {
             Font90 = Content.Load<SpriteFont>("fonts/silkscreen/font90");
         }
 
+        public static Texture2D Crop(Texture2D image, Rectangle source) {
+            var graphics = image.GraphicsDevice;
+            var ret = new RenderTarget2D(graphics, source.Width, source.Height);
+            var sb = new SpriteBatch(graphics);
+
+            graphics.SetRenderTarget(ret); // draw to image
+            graphics.Clear(new Color(0, 0, 0, 0));
+
+            sb.Begin();
+            sb.Draw(image, Vector2.Zero, source, Color.White);
+            sb.End();
+
+            graphics.SetRenderTarget(null); // set back to main window
+
+            return (Texture2D) ret;
+        }
+
         public virtual void Click() {
 
         }
@@ -63,11 +80,17 @@ namespace Battle_Reign {
         }
 
         public int Level { get; set; }
-
+        
         public static int TileWidth { get; set; }
         public static int Cell {
             get { return TileWidth / 3; }
         }
+
+        public float TileLayer { get; } = .1f;
+        public float UnitLayer { get; } = .11f;
+        public float BlockLayer { get; } = .12f;
+        public float UnitInfoLayer { get; } = .13f;
+        public float GUILayer { get; } = .5f;
 
         public static Point SpritesheetSize {
             get { return new Point(Spritesheet.Width / (Cell), Spritesheet.Height / (Cell)); }

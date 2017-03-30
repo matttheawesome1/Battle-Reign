@@ -38,10 +38,10 @@ namespace Battle_Reign {
             get {
                 int width = 18;
 
-                return String.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "G", "DRAW GUI", DrawGUI) + 
-                    String.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "F", "DRAW FOG OF WAR", DrawFOW) +
-                    String.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "D", "DISCOVER ON CLICK", DiscoverOnClick) +
-                    String.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "P", "PERFORMANCE", CPUMessage);
+                return string.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "G", "DRAW GUI", DrawGUI) + 
+                    string.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "F", "DRAW FOG OF WAR", DrawFOW) +
+                    string.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "D", "DISCOVER ON CLICK", DiscoverOnClick) +
+                    string.Format("{0,0} - {1,-" + width + "} : {2,-5} \n", "P", "PERFORMANCE", CPUMessage);
             }
         }
 
