@@ -10,16 +10,32 @@ namespace Battle_Reign {
     public class GrassTile : Tile {
         public GrassTile(Vector2 position, Tile[,] tiles) : base(Content.Load<Texture2D>("tiles/spritesheet"), position, tiles, Point.Zero, new Point(3, 3)) {
             Values = new TextureSpot[3, 3] { { TextureSpot.TOPLEFT, TextureSpot.TOPMID, TextureSpot.TOPRIGHT }, { TextureSpot.MIDLEFT, TextureSpot.MIDMID, TextureSpot.MIDRIGHT }, { TextureSpot.BOTLEFT, TextureSpot.BOTMID, TextureSpot.BOTRIGHT} };
+        }
 
-            Texture = new Texture2D(Graphics.GraphicsDevice, TileWidth, TileWidth);
+        public void GenerateTexture() {
+            Texture = Crop(Spritesheet, new Rectangle(Point.Zero, new Point(Cell * 3, Cell * 5)));
 
-            Color[] ssData = new Color[Spritesheet.Width * Spritesheet.Height];
-            Spritesheet.GetData<Color>(ssData);
 
-            Rectangle rectangle = new Rectangle(SpriteCoords * new Point(Cell), new Point(TileWidth));
 
-            Color[] data = new Color[rectangle.Width * rectangle.Height];
-            Spritesheet.GetData(0, rectangle, data, 0, data.Length);
+            Color[] data = new Color[Texture.Width * Texture.Height];
+            Color[] newData = new Color[Texture.Width * Texture.Height];
+
+            Texture.GetData(data);
+            //NewTexture = new Texture2D(Texture.GraphicsDevice, Texture.Width, Texture.Height);
+
+            for (int i = 0; i < Values.GetLength(0); i++) {
+                for (int j = 0; j < Values.GetLength(1); j++) {
+                    for (int x = 0; x < Cell; x++) {
+                        for (int y = 0; y < Cell; y++) {
+                            //try {
+                                newData[Cell * i + (Cell * Cell * 3 * j) + (x * (Cell * 3)) + y] = data[Cell * ((int) Values[i, j] / 3) + (Cell * Cell * 3 * ((int) Values[i, j] % 3)) + (x * (Cell * 3)) + y];
+                            //} catch (Exception) { Console.WriteLine(); }
+                        }
+                    }
+                }
+            }
+
+            Texture.SetData(newData);
         }
 
         public override void Update(GameTime gt) {
@@ -132,40 +148,7 @@ namespace Battle_Reign {
                 Values[1, 2] = TextureSpot.MIDMID;
             }
 
-            /*for (int i = 0; i < Values.GetLength(0); i++) {
-                for (int j = 0; j < Values.GetLength(1); j++) {
-                    for (int x = 0; x < Cell; x++) {
-                        for (int y = 0; y < Cell; y++) {
-                            data[(x + (i * Cell)) * (y + (j * Cell))] = ssData[((SpriteCoords.X * Cell) + (x + (i * Cell))) * ((SpriteCoords.Y * Cell) * (y + (j * Cell)))];
-                            //Console.WriteLine((SpriteCoords.Y * Cell) + " + " + (y + (Cell * j)) + " = " + (SpriteCoords.Y * Cell + ((y + (Cell * j)))) + " at (" + (x + (Cell * i)) + ", " + (y + (Cell * j)) + ")");
-                        }
-                    }
-                }
-            }*/
-
-            // DO ^^^^^^^^ WITH CURRENT TEXTURE
-
-            /*Rectangle rectangle = new Rectangle(SpriteCoords * new Point(Cell), new Point(TileWidth));
-            
-            Color[] data = new Color[rectangle.Width * rectangle.Height];
-            Texture.GetData(0, rectangle, data, 0, data.Length);
-
-            Color[] ssData = new Color[rectangle.Width * rectangle.Height];
-            Spritesheet.GetData(ssData);
-
-            for (int i = 0; i < Values.GetLength(0); i++) {
-                for (int j = 0; j < Values.GetLength(1); j++) {
-                    for (int x = 0; x < Cell; x++) {
-                        for (int y = 0; y < Cell; y++) {
-                            //data[(Cell * i + x) * y] = ssData[(((((int) Values[i, j] * Cell) / 3)) + x) * (((int) Values[i, j] % 3) * 3 + y)];
-
-                            //Console.WriteLine(((Cell * i + x) * y));
-                        }
-                    }
-                }
-            }
-            
-            Texture.SetData(data);*/
+            //GenerateTexture();
         }
 
         public override void Draw(SpriteBatch sb) {
@@ -175,7 +158,7 @@ namespace Battle_Reign {
                 for (int j = 0; j < Values.GetLength(1); j++) {
                     sb.Draw(Spritesheet, new Vector2(Position.X + (i + 1) * Cell, Position.Y + (j + 1) * Cell), 
                         new Rectangle(new Vector2(Cell * (float) Math.Floor((float) Values[i, j] / 3), Cell * (float) Math.Floor((float) Values[i, j] % 3)).ToPoint(), 
-                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(Cell), 1f, SpriteEffects.None, 1);
+                        new Vector2(Cell).ToPoint()), Color.White, 0f, new Vector2(Cell), 1f, SpriteEffects.None, TileLayer);
                 }
             }
 

@@ -26,21 +26,21 @@ namespace Battle_Reign {
         }
 
         public virtual void Draw(SpriteBatch sb) {
-            sb.Draw(Spritesheet, new Vector2(Position.X, Extend ? Position.Y + (TileWidth - SpriteSize.Y * Cell) : Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, 0f);
+            sb.Draw(Spritesheet, new Vector2(Position.X, Extend ? Position.Y + (TileWidth - SpriteSize.Y * Cell) : Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, BlockLayer);
         }
         public virtual void Draw(SpriteBatch sb, bool available) {
             //sb.Draw(BlankPixel, Hitbox, available ? ColorAvailable : ColorUnavailable);
             DrawHitbox(sb, available ? ColorAvailable : ColorUnavailable);
 
-            sb.Draw(Spritesheet, new Vector2(Position.X, Extend ? Position.Y + (TileWidth - SpriteSize.Y * Cell) : Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, 0f);
+            sb.Draw(Spritesheet, new Vector2(Position.X, Extend ? Position.Y + (TileWidth - SpriteSize.Y * Cell) : Position.Y), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(Cell * SpriteSize.X, Cell * SpriteSize.Y)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, BlockLayer);
         }
         public void DrawHitbox(SpriteBatch sb, Color color) {
             int width = 2;
 
-            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(Hitbox.Width + width, width)), color);
-            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(width, Hitbox.Height + width)), color);
-            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X, Hitbox.Y + Hitbox.Height), new Point(Hitbox.Width, width)), color);
-            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X + Hitbox.Width, Hitbox.Y), new Point(width, Hitbox.Height + width)), color);
+            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(Hitbox.Width + width, width)), null, color, 0, Vector2.Zero, SpriteEffects.None, BlockLayer);
+            sb.Draw(BlankPixel, new Rectangle(Hitbox.Location, new Point(width, Hitbox.Height + width)), null, color, 0, Vector2.Zero, SpriteEffects.None, BlockLayer);
+            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X, Hitbox.Y + Hitbox.Height), new Point(Hitbox.Width, width)), null, color, 0, Vector2.Zero, SpriteEffects.None, BlockLayer);
+            sb.Draw(BlankPixel, new Rectangle(new Point(Hitbox.X + Hitbox.Width, Hitbox.Y), new Point(width, Hitbox.Height + width)), null, color, 0, Vector2.Zero, SpriteEffects.None, BlockLayer);
         }
 
         public static int VisionRange {

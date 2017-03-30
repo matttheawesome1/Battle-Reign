@@ -24,7 +24,7 @@ namespace Battle_Reign {
         }
 
         public virtual void Draw(SpriteBatch sb) {
-            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y + (TileWidth - SpriteSize.Y * Cell)), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(SpriteSize.X * Cell, SpriteSize.Y * Cell)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, 1);
+            sb.Draw(Spritesheet, new Vector2(Position.X, Position.Y + (TileWidth - SpriteSize.Y * Cell)), new Rectangle(new Point(SpriteCoords.X * Cell, SpriteCoords.Y * Cell), new Point(SpriteSize.X * Cell, SpriteSize.Y * Cell)), Color.White, 0f, new Vector2(0), 1f, SpriteEffects.None, BlockLayer);
         }
 
         public bool Passable { get; set; }

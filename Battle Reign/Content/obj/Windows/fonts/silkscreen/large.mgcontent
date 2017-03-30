@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/fonts/silkscreen/large.spritefont</SourceFile>
+  <SourceTime>2017-02-23T13:33:48.5593524-05:00</SourceTime>
+  <DestFile>C:/Users/Matthew.Zelenka/Source/Repos/Battle-Reign2/Battle Reign/Content/bin/Windows/fonts/silkscreen/large.xnb</DestFile>
+  <DestTime>2017-02-24T12:13:26.1120142-05:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2016-03-30T02:36:08-04:00</ProcessorTime>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

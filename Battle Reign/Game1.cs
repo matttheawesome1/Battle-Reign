@@ -115,11 +115,11 @@ namespace Battle_Reign {
 
             //spriteBatch.Begin(transformMatrix: viewMatrix);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, transformMatrix: viewMatrix);
-            
+
             sm.Draw(spriteBatch);
 
-            //spriteBatch.DrawString(GameObject.FontMedium, fps.ToString(), new Vector2(camera.Position.X + graphics.PreferredBackBufferWidth - 100, camera.Position.Y + graphics.PreferredBackBufferHeight - 35), Color.Red);
-
+            spriteBatch.DrawString(GameObject.FontMedium, fps.ToString(), new Vector2(camera.Position.X + graphics.PreferredBackBufferWidth - 100, camera.Position.Y + graphics.PreferredBackBufferHeight - 35), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+            
             mouse.Draw(spriteBatch);
 
             spriteBatch.End();

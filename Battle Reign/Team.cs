@@ -20,7 +20,7 @@ namespace Battle_Reign {
             Save = save;
 
             Cards = new List<Card>(7);
-            StatList = new Stats(10, new Point(3), new Point(40, 0), new List<Stat>() {
+            StatList = new Stats(17, new Point(3), new Point(100, 0), this, new List<Stat>() {
                 new Stat("Gold", DefaultGold, 5, FontSmall, new Point(0, (SpritesheetSize.Y - 16) * Cell), new Point(Cell)),
                 new Stat("Food", DefaultFood, 5, FontSmall, new Point(1 * Cell, (SpritesheetSize.Y - 16) * Cell), new Point(Cell)),
                 new Stat("Iron", DefaultSilver, 5, FontSmall, new Point(2 * Cell, (SpritesheetSize.Y - 16) * Cell), new Point(Cell)),
@@ -128,17 +128,14 @@ namespace Battle_Reign {
         public void DrawDebugMenu(SpriteBatch sb) {
             int offset = 2;
 
-            sb.DrawString(Font15, Debug.DebugMenu, Camera.Position + new Vector2(WindowPadding, 100), Color.Black);
-            sb.DrawString(Font15, Debug.DebugMenu, Camera.Position + new Vector2(WindowPadding + offset, 100 + offset), Color.White);
+            sb.DrawString(Font15, Debug.DebugMenu, Camera.Position + new Vector2(WindowPadding, 100), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
+            sb.DrawString(Font15, Debug.DebugMenu, Camera.Position + new Vector2(WindowPadding + offset, 100 + offset), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
         }
         public void DrawGUI(SpriteBatch sb) {
             int padding = 10, height = padding * 5, offset = 3;
 
-            sb.Draw(BlankPixel, Camera.Position, new Rectangle(0, 0, Graphics.PreferredBackBufferWidth, height), new Color(62, 6, 6));
-            sb.Draw(BlankPixel, new Vector2(Camera.Position.X + padding, Camera.Position.Y + padding), new Rectangle(0, 0, Graphics.PreferredBackBufferWidth - padding * 2, padding * 3), new Color(129, 21, 21));
-
-            sb.Draw(Spritesheet, Camera.Position + new Vector2(padding - 7, padding - 3), new Rectangle(new Point((SpritesheetSize.X - 3) * Cell, 0), new Point(3 * Cell, 2 * Cell)), Color);
-            sb.Draw(Spritesheet, Camera.Position + new Vector2(padding - 7, padding - 3), new Rectangle(new Point((SpritesheetSize.X - 3) * Cell, 4 * Cell), new Point(3 * Cell, 2 * Cell)), Color.White);
+            sb.Draw(Spritesheet, Camera.Position + new Vector2(padding - 7, padding - 3), new Rectangle(new Point((SpritesheetSize.X - 3) * Cell, 0), new Point(3 * Cell, 2 * Cell)), Color, 0, Vector2.Zero, 4, SpriteEffects.None, GUILayer);
+            sb.Draw(Spritesheet, Camera.Position + new Vector2(padding - 7, padding - 3), new Rectangle(new Point((SpritesheetSize.X - 3) * Cell, 4 * Cell), new Point(3 * Cell, 2 * Cell)), Color.White, 0, Vector2.Zero, 4, SpriteEffects.None, GUILayer);
 
             //ExitButton.Position = new Vector2(Graphics.PreferredBackBufferWidth - padding - ExitButton.Background.Width, height + padding);
             ExitButton.Draw(sb);
@@ -147,7 +144,7 @@ namespace Battle_Reign {
             StatList.StatList.ForEach(x => x.Draw(sb));
 
             //TIMER
-            sb.DrawString(FontSmall, ((int) (TurnTime - Time)).ToString(), Camera.Position + new Vector2(Graphics.PreferredBackBufferWidth - padding - FontSmall.MeasureString(((int) (TurnTime - Time)).ToString()).X - offset * 2, padding + offset), Color.White);
+            sb.DrawString(FontSmall, ((int) (TurnTime - Time)).ToString(), Camera.Position + new Vector2(Graphics.PreferredBackBufferWidth - padding - FontSmall.MeasureString(((int) (TurnTime - Time)).ToString()).X - offset * 2, padding + offset), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, GUILayer);
             
             //ADD CARD BUTTON
             AddCardButton.Draw(sb);

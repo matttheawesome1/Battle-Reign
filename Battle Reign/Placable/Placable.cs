@@ -25,9 +25,9 @@ namespace Battle_Reign {
         public void DrawInfo(SpriteBatch sb) {
             Vector2 position = Position + new Vector2(SpriteSize.X * Cell / 2 - BackgroundSize.X / 2, -BackgroundSize.Y - 4 + (TileWidth - SpriteSize.Y * Cell));
 
-            sb.Draw(Spritesheet, position, new Rectangle(BackgroundCoords * new Point(Cell), BackgroundSize), Color.White);
-            sb.Draw(Spritesheet, position, new Rectangle(FlagCoords * new Point(Cell), FlagSize), Team.Color);
-            sb.Draw(Spritesheet, position + new Vector2(7, 15), new Rectangle((HealthCoords + new Point(10 - (Health > 0 && ((int) (((float) Health / (float) MaxHealth) * 10)) == 0 ? 1 : ((int) (((float) Health / (float) MaxHealth) * 10))), 0)) * new Point(Cell), HealthSize), Color.White);
+            sb.Draw(Spritesheet, position, new Rectangle(BackgroundCoords * new Point(Cell), BackgroundSize), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, UnitInfoLayer);
+            sb.Draw(Spritesheet, position, new Rectangle(FlagCoords * new Point(Cell), FlagSize), Team.Color, 0, Vector2.Zero, 1, SpriteEffects.None, UnitInfoLayer);
+            sb.Draw(Spritesheet, position + new Vector2(7, 15), new Rectangle((HealthCoords + new Point(10 - (Health > 0 && ((int) (((float) Health / (float) MaxHealth) * 10)) == 0 ? 1 : ((int) (((float) Health / (float) MaxHealth) * 10))), 0)) * new Point(Cell), HealthSize), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, UnitInfoLayer);
         }
 
         public int Health { get; set; }
