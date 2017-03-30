@@ -14,7 +14,7 @@ namespace Battle_Reign
         {
             SettingsButtons = new List<Button>()
             {
-                //new Battle_Reign.Button(true, )
+                new Button(true, )
             };
         }
 
