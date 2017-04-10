@@ -1,2 +1,0 @@
-P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\obj\x86\Debug\Battle Reign.exe
-P:\Computer Programming\Nicholas.Gilliam\C#\Battle Reign\Battle Reign\obj\x86\Debug\Battle Reign.pdb
